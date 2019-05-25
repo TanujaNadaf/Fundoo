@@ -1,0 +1,42 @@
+.main{
+    height: -webkit-fill-available;
+     //top:50%;
+     //top:50%;
+      // left:47%;
+      // width:500px;
+      // height:500px;
+      // transform:translate(-50%,-50%);
+       //position:absolute;
+    }
+   h1{
+        font-size: 20px;
+        font-family:"Times-New-Roman";
+        //text-align: center
+    }
+   
+   h2{
+       font-size:17px;
+     font-family:"Times-New-Roman"
+    }
+   
+    
+   a:hover{
+       cursor:pointer;
+      color:blue;
+    }
+    
+   p{
+       font-family:"Times-New-Roman";
+       font-size:14px;
+       
+       margin-block-start: auto;
+   
+    }
+   button:hover
+    {
+       cursor:pointer;
+        background:#1c8adb;
+        color:#000;
+       
+   }
+   

@@ -1,0 +1,82 @@
+<div class="main" fxFlex='100' fxFlex="row" fxLayoutAlign="center center">
+  <mat-card fxFlex='30' fxFlex.xs='100'>
+    <h1>Create your Fundoo Account</h1>
+    <h2>to continue to Fundoo</h2>
+    <form autocomplete="off">
+
+
+      <div fxLayout="row" fxLayout.xs='column' fxLayoutGap='1%'>
+        <div fxFlex="50">
+          <mat-form-field fxFlex='100' [style.font-size.px]='12' appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" [formControl]="firstnameFormControl">
+            <mat-error *ngIf="firstnameFormControl.invalid && firstnameFormControl.hasError('required')">First Name is
+              required!</mat-error>
+          </mat-form-field>
+
+        </div>
+        <div fxFlex="50">
+          <mat-form-field fxFlex='100' [style.font-size.px]="'12'" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" [formControl]="lastnameFormControl">
+            <mat-error *ngIf="lastnameFormControl.invalid && lastnameFormControl.hasError('required')">Last Name is
+              required!"
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+
+      </div>
+      <div fxLayout="row">
+        <div fxFlex="100">
+          <mat-form-field fxFlex="100" [style.font-size.px]='12' appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" [formControl]="emailFormControl">
+            <mat-error *ngIf="emailFormControl.invalid && emailFormControl.hasError('required')">Email is required!
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.invalid && emailFormControl.hasError('email')">Email is Invalid!Please
+              enter a valid email</mat-error>
+
+          </mat-form-field>
+        </div>
+      </div>
+
+      <p>You can use letters,numbers & periods </p>
+
+
+      <div fxLayout="row" fxLayout.xs='column' fxLayoutGap='1%'>
+        <div fxFlex="50">
+          <mat-form-field fxFlex="100" [style.font-size.px]="'12'" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="Password" [formControl]="passwordFormControl">
+            <mat-error *ngIf="passwordFormControl.invalid && passwordFormControl.hasError('minlength')">Password should
+              have minimum 8 characters</mat-error>
+
+          </mat-form-field>
+        </div>
+        <div fxFlex="50">
+          <mat-form-field fxFlex="100" [style.font-size.px]="'12'" appearance="outline">
+            <mat-label>Confirm</mat-label>
+            <input matInput type="password" placeholder="Confirm" [formControl]="confirmFormControl">
+            <mat-error *ngIf="confirmFormControl.invalid && passwordFormControl.value!= confirmFormControl.value">
+              Passwords do not match!!Please try again</mat-error>
+
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <p> Use 8 or more characters with a mix of letters,symbols and numbers</p>
+
+      <div fxFlexLayout="row" fxLayoutGap="47%">
+        <a mat-button color="primary" (click)="signIn()" style="font-weight:bold;font-family:Times-New -Roman">Sign in
+          instead</a>
+        <button fxFlex="23" mat-raised-button color="primary" style="font-family:Times-New-Roman"
+          (click)="register()">Register</button>
+      </div>
+
+
+    </form>
+  </mat-card>
+</div>
