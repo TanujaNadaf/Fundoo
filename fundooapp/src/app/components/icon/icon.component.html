@@ -1,0 +1,29 @@
+<div fxLayout="row" style="display:flex">
+  <img src="../../../assets/images/reminder.svg" style="margin-top:25px">
+  <img src="../../../assets/images/personadd.svg"style="margin-top:25px;margin-left:35px">
+  <img src="../../../assets/images/colorslens.svg"style="margin-top:25px;margin-left:35px">
+  <img src="../../../assets/images/addimage.svg"style="margin-top:25px;margin-left:35px">
+  <img src="../../../assets/images/archive.svg" style="margin-top:25px;margin-left:35px">
+  
+  <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-top:25px;margin-left:35px">
+    <img src="../../../assets/images/outline-more_vert.svg">
+    <mat-menu #menu="matMenu" >
+      
+      <button mat-menu-item (click)="deleteNote()">
+       <span>Delete Note</span>
+      </button>
+    
+       <button mat-menu-item>
+       <span>Add label</span>
+      </button>
+      <button mat-menu-item>
+        <span>Add drawing</span>
+       </button>
+       <button mat-menu-item>
+        <span>Make a copy</span>
+       </button>
+       
+    </mat-menu>
+
+</button>
+</div> 

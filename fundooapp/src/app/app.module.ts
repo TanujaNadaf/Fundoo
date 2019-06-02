@@ -17,6 +17,18 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import { NotesComponent } from './components/notes/notes.component';
+import { AddNoteComponent } from './components/add-note/add-note.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSnackBarModule} from '@angular/material'
+import { RemindersComponent } from './components/reminders/reminders.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { TrashComponent } from './components/trash/trash.component';
+import { IconComponent } from './components/icon/icon.component';
+import { DisplayComponent } from './components/display/display.component';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +36,14 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     RegisterComponent,
     LoginComponent,
     DashboardComponent,
+    NotesComponent,
+    AddNoteComponent,
+   
+    RemindersComponent,
+    ArchiveComponent,
+    TrashComponent,
+    IconComponent,
+    DisplayComponent,
     
   ],
   imports: [
@@ -37,7 +57,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatButtonModule,
     FormsModule, ReactiveFormsModule,
     HttpClientModule,MatDividerModule,MatGridListModule,MatToolbarModule,MatSidenavModule,
-    MatListModule,MatButtonToggleModule
+    MatListModule,MatButtonToggleModule,MatIconModule,MatMenuModule,MatExpansionModule,MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

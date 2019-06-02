@@ -1,9 +1,97 @@
-.mat-button{
-   padding:14px;
-    font-size: 22px;
-    border-radius:50%;
-    
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+ 
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
-.app{
-    padding:10px;
+.mat-icon-button {
+  margin-left: 20px;
+  margin-top: 8px;
+  font-size: 20px;
+  border-radius: 10%;
+  
+}
+.example-app-name {
+ 
+  margin-top:18px;
+  font-size:20px;
+}
+.search{
+  margin-left:60px;
+  margin-top:6px;
+  
+}
+.example-sidenav-container {
+  flex: 1;
+}
+.label{
+  padding:20px;
+  font-size:12px;
+  font-family:'sans-seriff'
+
+}
+.link{
+  font-family:'sans-seriff';
+  color: black;
+  
+  
+}
+.icon{
+  margin-left:15px;
+  margin-right:30px;
+}
+.name{
+  
+  margin-right:60px;
+}
+.content{
+  background-color: white;
+ 
+}
+.input{
+  font-size: 16px;
+  margin-left: 5px;
+}
+.refresh{
+  margin-left: 30px;
+  margin-top:  17px;
+}
+ .grid{
+  height:24px;
+  margin-top:17px;
+}
+.settings{
+  margin-top:17px;
+  height:26px;
+  width: 26px;
+}
+.apps{
+  margin-left: 110px;
+  margin-top:17px;
+  height:35px;
+  width:30px;
+}
+.mat-divider{
+  margin-top: 1px;
+}
+.mat-mini-fab{
+ // margin-left:20px;
+  margin-top:7px;
+  border-radius:50%;
+  font-weight:bold;
+}
+.account-name{
+ font-size:10px;
+ font-weight: bold;
+ margin-left:20px;
+}
+.mat-sidenav-content{
+  background-color: white;
+}
+::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
+  background-color:transparent
 }

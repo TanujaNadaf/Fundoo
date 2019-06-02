@@ -1,0 +1,20 @@
+<div *ngFor="let data of allCards" fxLayout="row" fxLayoutAlign="center center" style="margin-top:50px">
+    <div *ngIf="!data.isDeleted">
+    
+    <mat-card  fxFlex='100'>
+    <div fxLayout="row" class="title">
+    {{data.title}}
+    </div>
+     
+    {{data.description}}
+  
+    
+    
+    <app-icon  [cards]="data"></app-icon>
+
+</mat-card>
+</div>
+
+</div>
+
+

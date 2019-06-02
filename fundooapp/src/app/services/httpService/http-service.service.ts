@@ -14,11 +14,22 @@ export class HttpServiceService {
     const httpOptions = {
       headers: new HttpHeaders(
         {
-          'Content-Type': 'application/json'
+          'Authorization':localStorage.getItem('token'),
+          'Content-Type' : 'application/json'
         })
     };
-       return this.http.post(this.dbUrl+url,data, httpOptions);
+      console.log(httpOptions);
+    return this.http.post(this.dbUrl+url,data, httpOptions);
   }
-   
+  get(url) {
+    const httpOptions = {
+      headers: new HttpHeaders(
+        {
+          'Authorization':localStorage.getItem('token'),
+          'Content-Type' : 'application/json'
+        })
+    };
+    return this.http.get(this.dbUrl+url,httpOptions);
+  }
 
 }
