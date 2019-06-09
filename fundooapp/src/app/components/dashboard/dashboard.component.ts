@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { EditlabelsComponent } from '../../editlabels/editlabels.component'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,public dialog: MatDialog,) { }
 
   ngOnInit() {
   }
@@ -27,5 +29,9 @@ openArchive(){
 openTrash(){
   console.log('in Trash');
   this.router.navigate(['dashboard/trash']);
+}
+openEditLabels(){
+  console.log('in edit labels');
+  this.dialog.open(EditlabelsComponent);
 }
 }

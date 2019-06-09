@@ -1,4 +1,3 @@
-<app-add-note></app-add-note>
-<app-display [allCards]="cards"></app-display>
-   
+<app-add-note (messageEvent)="eventOccur()"></app-add-note>
 
+<app-display [allCards]="cards" (messageEvent)="eventOccur()" ></app-display>

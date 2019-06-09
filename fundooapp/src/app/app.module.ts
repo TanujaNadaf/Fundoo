@@ -28,6 +28,9 @@ import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { IconComponent } from './components/icon/icon.component';
 import { DisplayComponent } from './components/display/display.component';
+import { DialogComponent } from './dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditlabelsComponent } from './editlabels/editlabels.component';
 
 
 @NgModule({
@@ -44,6 +47,8 @@ import { DisplayComponent } from './components/display/display.component';
     TrashComponent,
     IconComponent,
     DisplayComponent,
+    DialogComponent,
+    EditlabelsComponent,
     
   ],
   imports: [
@@ -57,9 +62,10 @@ import { DisplayComponent } from './components/display/display.component';
     MatButtonModule,
     FormsModule, ReactiveFormsModule,
     HttpClientModule,MatDividerModule,MatGridListModule,MatToolbarModule,MatSidenavModule,
-    MatListModule,MatButtonToggleModule,MatIconModule,MatMenuModule,MatExpansionModule,MatSnackBarModule
+    MatListModule,MatButtonToggleModule,MatIconModule,MatMenuModule,MatExpansionModule,MatSnackBarModule,MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[DialogComponent,EditlabelsComponent ]
 })
 export class AppModule { }

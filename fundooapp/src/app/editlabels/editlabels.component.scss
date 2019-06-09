@@ -1,0 +1,25 @@
+.input{
+    border-bottom:1px solid grey;
+    padding:10px;
+}
+.image1{
+    fill:grey;
+    padding:10px;
+}
+.image2{
+    fill:grey;
+   padding:10px;
+}
+.divider{
+    margin-top: 10px;
+}
+.button{
+    float: right;
+    padding:10px;
+}
+::ng-deep .mat-dialog-container {
+padding: 0px;
+}
+.heading{
+    padding:10px;
+}

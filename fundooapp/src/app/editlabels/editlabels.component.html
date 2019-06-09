@@ -1,0 +1,14 @@
+<div class="heading">Edit Labels</div>
+
+<div fxLayout="row">
+    <img class="image1" src="../../assets/images/outlineClear.svg">
+    
+    <input autocomplete="off" class="input" matInput placeholder="Create new label" [formControl]="label">
+    <img class="image2" src="../../assets/images/outline-check.svg" (click)="createLabel()">
+</div>
+<div class="divider">
+    <mat-divider></mat-divider>
+</div>
+<div class="button" (click)="createLabel()">
+    <button mat-button>Done</button>
+</div>

@@ -1,0 +1,15 @@
+<div fxLayout="row" class="row">
+  <div>
+    <textarea class="text" [formControl]="title"></textarea>
+
+  </div>
+</div>
+<div>
+  <textarea class="text" [formControl]="description"></textarea>
+
+</div>
+<div fxLayout="row">
+  <app-icon></app-icon>
+  <button (click)="updateNotes(card)" (click)="onNoClick()" mat-button
+    style="margin-top:20px;margin-left:120px;font-family:Roboto,Arial,sans-serif;font-weight: bold">Close</button>
+</div>

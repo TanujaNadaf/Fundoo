@@ -31,4 +31,21 @@ export class UserServiceService {
     console.log("In get deleted notes service");
     return this.httpService.get('/notes/getTrashNotesList');
   }
+  archive(note){
+    console.log("In delete function");
+    return this.httpService.post('/notes/archiveNotes',note);
   }
+  update(note){
+    console.log("In update notes service");
+    return this.httpService.post('/notes/updateNotes',note);
+  }
+  changeColor(note){
+    console.log("In change color notes service");
+    return this.httpService.post('/notes/changesColorNotes',note);
+  }
+  createLabel(label){
+    console.log("In create label user service");
+    return this.httpService.post('/noteLabels',label);
+  }
+
+}

@@ -7,12 +7,16 @@ import { NotesComponent } from './components/notes/notes.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
+import { DialogComponent } from './dialog/dialog.component';
 const routes: Routes = [
-  // {
-  //   path: '', redirectTo: 'login', component : LoginComponentComponent
-  // },
+  {
+    path: '', redirectTo: 'login', pathMatch: 'full' 
+  },
   {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'dialog', component: DialogComponent
   },
   {
     path: 'register', component: RegisterComponent
@@ -20,6 +24,9 @@ const routes: Routes = [
   {
     path: 'dashboard', component: DashboardComponent,
     children: [
+      {
+        path: '', redirectTo: 'notes', pathMatch: 'full' 
+      },
       {
         path: 'notes', component: NotesComponent
       },

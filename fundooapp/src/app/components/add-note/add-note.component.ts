@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import {AddNotes} from '../../models/addNotesModel';
 import {UserServiceService} from '../../services/userService/user-service.service';
@@ -9,12 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-note.component.scss']
 })
 export class AddNoteComponent implements OnInit {
+  cards;
+  @Output() messageEvent =new EventEmitter<any>()
 addTitleFormControl=new FormControl('',[]);
 addDescriptionFormControl=new FormControl('',[]);
   constructor(private userService:UserServiceService) { }
   
   ngOnInit() {
-   
+    
   }
   show=true;
   addNotes(){
@@ -27,11 +29,13 @@ addDescriptionFormControl=new FormControl('',[]);
     console.log(addNotesModel);
     this.userService.addNotes(addNotesModel).subscribe(data=>{
       console.log("Response to Add",data);
+      this.messageEvent.emit();
      
     },error=>{
       console.log("Error in Adding Notes",error);
     })
-    }
+    
+  }
     
   }
 

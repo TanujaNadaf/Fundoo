@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,} from '@angular/core';
 import {UserServiceService} from '../../services/userService/user-service.service';
+import { Variable } from '@angular/compiler/src/render3/r3_ast';
+import { DataService } from "../../services/data.service";
+
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
@@ -7,10 +10,14 @@ import {UserServiceService} from '../../services/userService/user-service.servic
 })
 export class NotesComponent implements OnInit {
   cards;
-
-  constructor(private userService:UserServiceService) { }
+  
+  constructor(private userService:UserServiceService, public data: DataService) { }
 
   ngOnInit() {
+    this.data.currentData.subscribe(card => {
+      this.allNotes();
+
+    });
     this.allNotes();
   }
   allNotes() {
@@ -22,6 +29,10 @@ export class NotesComponent implements OnInit {
     }, error => {
       console.log("Error in Displaying Notes", error);
     })
+    
+  }
+  eventOccur(){
+    this.allNotes();
     
   }
 }

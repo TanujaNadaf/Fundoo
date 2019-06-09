@@ -1,20 +1,18 @@
-<div *ngFor="let data of allCards" fxLayout="row" fxLayoutAlign="center center" style="margin-top:50px">
-    <div *ngIf="!data.isDeleted">
-    
-    <mat-card  fxFlex='100'>
-    <div fxLayout="row" class="title">
+<div  fxLayout="row wrap" fxLayoutGap="5px" fxLayoutAlign="center stretch">
+<div *ngFor="let data of allCards" >
+    <div *ngIf="!data.isDeleted && !data.isArchived">
+    <mat-card [ngStyle]="{'background-color':data.color}" fxFlex='100'  style="margin-top:50px;">
+    <div class="row"(click)="openDialog(data)">
     {{data.title}}
     </div>
-     
     {{data.description}}
-  
+     <app-icon  [cards]="data" (messageEvent)="eventOccur()"></app-icon>
     
-    
-    <app-icon  [cards]="data"></app-icon>
-
-</mat-card>
-</div>
+    </mat-card>
 
 </div>
+</div>
+</div>
+
 
 

@@ -1,29 +1,70 @@
-<div fxLayout="row" style="display:flex">
+<div style="display:flex">
   <img src="../../../assets/images/reminder.svg" style="margin-top:25px">
-  <img src="../../../assets/images/personadd.svg"style="margin-top:25px;margin-left:35px">
-  <img src="../../../assets/images/colorslens.svg"style="margin-top:25px;margin-left:35px">
-  <img src="../../../assets/images/addimage.svg"style="margin-top:25px;margin-left:35px">
-  <img src="../../../assets/images/archive.svg" style="margin-top:25px;margin-left:35px">
-  
-  <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-top:25px;margin-left:35px">
+  <img src="../../../assets/images/personadd.svg" style="margin-top:25px;margin-left:10px">
+  <button mat-icon-button [matMenuTriggerFor]="abovemenu" style="margin-top:25px;margin-left:10px">
+    <img src="../../../assets/images/colorslens.svg">
+    <mat-menu #abovemenu="matMenu" yPosition="above">
+      <table>
+        <tr *ngFor="let color of colorArray">
+
+
+          <td *ngFor="let obj of color">
+            <div class="button"  [ngStyle]="{'background-color':obj.color}" (click)="changeColor(obj.color,cards)"></div>
+
+          </td>
+        </tr>
+      </table>
+
+
+      <!-- <table>
+          <tr *ngFor="let row of data">
+              <td *ngFor="let value of row">{{value}}</td>
+          </tr>
+      </table> -->
+
+
+      <!--button mat-mini-fab class="button1" (click)="changeColor('transparent')"></button>
+      <button mat-mini-fab class="button2" (click)="changeColor('#FA8072',cards)"></button>
+      <button mat-mini-fab class="button3" (click)="changeColor('#FFA500',cards)"></button>
+      <button mat-mini-fab class="button4" (click)="changeColor()"></button>
+    </div>
+    <div class="example-button-row">
+      <button mat-mini-fab class="button5"></button>
+      <button mat-mini-fab class="button6"></button>
+      <button mat-mini-fab class="button7"></button>
+      <button mat-mini-fab class="button8"></button>
+    </div>
+    <div class="example-button-row">
+      <button mat-mini-fab class="button9"></button>
+      <button mat-mini-fab class="button10"></button>
+      <button mat-mini-fab class="button11"></button>
+      <button mat-mini-fab class="button12"></button>-->
+
+    </mat-menu>
+  </button>
+  <img src="../../../assets/images/addimage.svg" style="margin-top:25px;margin-left:10px">
+
+  <img src="../../../assets/images/archive.svg" style="margin-top:25px;margin-left:10px" (click)="archiveNote()">
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-top:25px;margin-left:10px">
     <img src="../../../assets/images/outline-more_vert.svg">
-    <mat-menu #menu="matMenu" >
-      
+    <mat-menu #menu="matMenu">
+
       <button mat-menu-item (click)="deleteNote()">
-       <span>Delete Note</span>
+        <span>Delete Note</span>
       </button>
-    
-       <button mat-menu-item>
-       <span>Add label</span>
+
+      <button mat-menu-item>
+        <span>Add label</span>
       </button>
       <button mat-menu-item>
         <span>Add drawing</span>
-       </button>
-       <button mat-menu-item>
+      </button>
+      <button mat-menu-item>
         <span>Make a copy</span>
-       </button>
-       
+      </button>
+
     </mat-menu>
 
-</button>
-</div> 
+  </button>
+</div>
