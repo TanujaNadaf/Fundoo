@@ -40,6 +40,16 @@
           <mat-divider></mat-divider>
         </div>
         <p class="label">LABELS</p>
+        
+          
+            <div *ngFor="let details of labels">
+                <a mat-list-item class="link">
+              <img  src="../../assets/images/baseline-label.svg" >
+              {{details.label}}
+              </a>
+          </div>    
+          
+       
         <a mat-list-item class="link" (click)="openEditLabels()">
           <mat-icon class="icon">
             <img src="../../../assets/images/edit.svg">

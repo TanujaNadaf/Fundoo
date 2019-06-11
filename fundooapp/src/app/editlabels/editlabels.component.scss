@@ -1,25 +1,61 @@
-.input{
-    border-bottom:1px solid grey;
+.mat-icon{
+    opacity: .54;;
     padding:10px;
 }
-.image1{
-    fill:grey;
+.name{
+    opacity: .54;;
+    margin-top: 5px;
+    font-size: 14px;
+    //border-bottom:1px solid grey;
+    margin-right:70px;
+}
+
+::ng-deep .mat-dialog-container {
+    padding: 0px;
+  
+}
+.heading{
     padding:10px;
-}
-.image2{
-    fill:grey;
-   padding:10px;
-}
-.divider{
-    margin-top: 10px;
 }
 .button{
     float: right;
     padding:10px;
 }
-::ng-deep .mat-dialog-container {
-padding: 0px;
+.divider{
+    margin-top: 10px;
 }
-.heading{
+.checkImage{
+    opacity: .54;
     padding:10px;
 }
+.labelImage{
+    //margin-left:10px;
+    opacity:.54;
+}
+.editImage{
+    opacity: .54;
+   
+}
+.row{
+    padding:10px;
+}
+
+/*.clearImage{
+    opacity: .54;;
+    padding:10px;
+}
+.name{
+    opacity: .54;;
+    margin-top: 15px;
+    padding-right: 100px;
+}
+
+
+
+
+
+
+.labelName{
+    opacity:.54;
+    margin-left: 10px;
+}*/

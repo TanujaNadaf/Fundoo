@@ -1,14 +1,22 @@
 <div class="heading">Edit Labels</div>
+<div fxLayout="row" >
 
-<div fxLayout="row">
-    <img class="image1" src="../../assets/images/outlineClear.svg">
-    
-    <input autocomplete="off" class="input" matInput placeholder="Create new label" [formControl]="label">
-    <img class="image2" src="../../assets/images/outline-check.svg" (click)="createLabel()">
+    <mat-icon   (click)="toggleIcon()">{{icon}}</mat-icon>
+    <input  autocomplete="off"  matInput (click)="toggleIcon()" placeholder="Create new label"  class="name" [formControl]="label">
+    <img class="checkImage" *ngIf="!show" src="../../assets/images/outline-check.svg" (click)="createLabel()">
+</div>  
+   <div *ngFor="let details of labels">
+    <div fxLayout="row" class="row">
+    <img class="labelImage" src="../../assets/images/baseline-label.svg" >
+   <div class="labelName">{{details.label}}</div>
+    <img class="editImage" src="../../assets/images/baseline-create.svg">       
 </div>
+</div>
+
 <div class="divider">
     <mat-divider></mat-divider>
 </div>
-<div class="button" (click)="createLabel()">
+<div class="button" (click)="createLabel()" (click)="onNoClick()">
     <button mat-button>Done</button>
 </div>
+

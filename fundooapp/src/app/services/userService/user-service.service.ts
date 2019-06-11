@@ -47,5 +47,8 @@ export class UserServiceService {
     console.log("In create label user service");
     return this.httpService.post('/noteLabels',label);
   }
-
+  getAllLabels(){
+    console.log("In get all labels");
+    return this.httpService.get('/noteLabels/getNoteLabelList');
+  }
 }
