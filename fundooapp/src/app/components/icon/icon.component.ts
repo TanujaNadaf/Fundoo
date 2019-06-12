@@ -43,8 +43,7 @@ export class IconComponent implements OnInit {
 
     }, error => {
       console.log("error in deleting", error);
-    }
-    )
+    })
   
 
   }

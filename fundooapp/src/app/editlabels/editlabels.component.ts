@@ -2,24 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {UserServiceService} from '../services/userService/user-service.service';
 //import{LabelModel} from '../models/labelModel';
-import { DataService } from "../services/data.service";
+
 import { FormControl } from '@angular/forms';
+import{DeletelabelComponent} from '../components/deletelabel/deletelabel.component';
 @Component({
   selector: 'app-editlabels',
   templateUrl: './editlabels.component.html',
   styleUrls: ['./editlabels.component.scss']
 })
-export class EditlabelsComponent implements OnInit {
-label=new FormControl();
-public icon = 'add'; 
+export class EditlabelsComponent implements OnInit{
+ 
+  label=new FormControl();
+  public icon = 'add'; 
 
 show=true;
 labels=[];
-  constructor(private userService:UserServiceService,public dialogRef: MatDialogRef<EditlabelsComponent>,public data: DataService) { }
+
+  constructor(private userService:UserServiceService,public dialogRef: MatDialogRef<EditlabelsComponent>) { }
 
   ngOnInit() {
-  this.getAllLabels();
+    
+    this.getAllLabels();
   }
+  
 createLabel(){
   console.log("In create label")
   //const labelModel=new LabelModel();
@@ -42,10 +47,11 @@ console.log(labelObject);
 getAllLabels(){
   this.userService.getAllLabels().subscribe(response => {
     console.log('Response to get all labels',response);
+   
     console.log(response['data']['details']);
     this.labels=response['data']['details'];
     console.log(this.labels);
-    this.data.sendData(this.labels);
+    
   }, error => {
     console.log("Error in Displaying Notes", error);
   })
@@ -60,8 +66,12 @@ public toggleIcon() {
   }
  
 }
+
 onNoClick():
     void {
     this.dialogRef.close();
   }
+
+
 }
+

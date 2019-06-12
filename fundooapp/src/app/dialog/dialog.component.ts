@@ -19,7 +19,7 @@ export class DialogComponent implements OnInit {
      private userService: UserServiceService, @Inject(MAT_DIALOG_DATA) public note: DialogData) {
     //console.log(note);
     this.title.setValue(note.title);
-    this.description.setValue(note.description)
+    this.description.setValue(note.description);
     this.card = note;
     console.log(this.card);
 

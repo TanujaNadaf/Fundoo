@@ -30,7 +30,7 @@ export class DisplayComponent implements OnInit {
     this.dialog.open(DialogComponent, {
       data: card
     })
-
+  
   }
   eventOccur() {
     this.messageEvent.emit();

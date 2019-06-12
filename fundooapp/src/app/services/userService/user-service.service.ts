@@ -51,4 +51,8 @@ export class UserServiceService {
     console.log("In get all labels");
     return this.httpService.get('/noteLabels/getNoteLabelList');
   }
+  deleteLabel(label){
+   console.log("In delete label user service");
+   return this.httpService.delete('/noteLabels/{id}/deleteNoteLabel',label);
+  }
 }

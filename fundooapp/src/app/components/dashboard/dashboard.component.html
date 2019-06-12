@@ -42,13 +42,14 @@
         <p class="label">LABELS</p>
         
           
-            <div *ngFor="let details of labels">
-                <a mat-list-item class="link">
-              <img  src="../../assets/images/baseline-label.svg" >
-              {{details.label}}
-              </a>
-          </div>    
-          
+            
+               <div *ngFor="let details of allLabels">
+              <a mat-list-item fxLayout="row" class="link">
+              <div class="editoutline">
+              <img  src="../../assets/images/outline-label.svg" ></div>
+              <div class="dashboardEditName" >{{details.label}}</div>
+            </a>
+            </div>
        
         <a mat-list-item class="link" (click)="openEditLabels()">
           <mat-icon class="icon">
@@ -76,5 +77,7 @@
     <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
+    
   </mat-sidenav-container>
+ 
 </div>

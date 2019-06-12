@@ -31,6 +31,8 @@ import { DisplayComponent } from './components/display/display.component';
 import { DialogComponent } from './dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditlabelsComponent } from './editlabels/editlabels.component';
+import { DeletelabelComponent } from './components/deletelabel/deletelabel.component';
+import { DeleteComponent } from './components/delete/delete.component';
 
 
 @NgModule({
@@ -49,6 +51,8 @@ import { EditlabelsComponent } from './editlabels/editlabels.component';
     DisplayComponent,
     DialogComponent,
     EditlabelsComponent,
+    DeletelabelComponent,
+    DeleteComponent,
     
   ],
   imports: [
@@ -66,6 +70,6 @@ import { EditlabelsComponent } from './editlabels/editlabels.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[DialogComponent,EditlabelsComponent ]
+  entryComponents:[DialogComponent,EditlabelsComponent,DeletelabelComponent ]
 })
 export class AppModule { }

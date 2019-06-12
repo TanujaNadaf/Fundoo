@@ -4,7 +4,7 @@
 }
 .name{
     opacity: .54;;
-    margin-top: 5px;
+    margin-top: 2px;
     font-size: 14px;
     //border-bottom:1px solid grey;
     margin-right:70px;
@@ -34,10 +34,14 @@
 }
 .editImage{
     opacity: .54;
-   
+    margin-top:12px;
 }
 .row{
     padding:10px;
+}
+.labelName{
+    margin-top:15px;
+    opacity: .9;
 }
 
 /*.clearImage{
