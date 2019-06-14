@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter,Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {UserServiceService} from '../services/userService/user-service.service';
 //import{LabelModel} from '../models/labelModel';
@@ -11,13 +11,13 @@ import{DeletelabelComponent} from '../components/deletelabel/deletelabel.compone
   styleUrls: ['./editlabels.component.scss']
 })
 export class EditlabelsComponent implements OnInit{
- 
+  @Output() messageEvent =new EventEmitter<any>()
   label=new FormControl();
   public icon = 'add'; 
-
+labelId;
 show=true;
 labels=[];
-
+hide = false;
   constructor(private userService:UserServiceService,public dialogRef: MatDialogRef<EditlabelsComponent>) { }
 
   ngOnInit() {
@@ -39,7 +39,7 @@ createLabel(){
 console.log(labelObject);
   this.userService.createLabel(labelObject).subscribe(response=>{
     console.log("Response to create label",response);
-   
+     this.messageEvent.emit();
   },error=>{
     console.log("Error in creating labels",error);
   })
@@ -66,12 +66,24 @@ public toggleIcon() {
   }
  
 }
-
+changeIcon(id){
+this.labelId=id;
+}
 onNoClick():
     void {
     this.dialogRef.close();
   }
+updateLabel(labelDetails){
+  console.log("In update label");
+  console.log(labelDetails);
+  this.userService.updateLabel(labelDetails.id,labelDetails).subscribe(response => {
 
+    console.log("Response to update label", response);
+   // this.messageEvent.emit();
+    }, error => {
+    console.log("error in updating label", error);
+  })
+}
 
 }
 

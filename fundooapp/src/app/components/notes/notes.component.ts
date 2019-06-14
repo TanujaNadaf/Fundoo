@@ -21,8 +21,7 @@ export class NotesComponent implements OnInit {
     this.allNotes();
   }
   allNotes() {
-    
-    this.userService.getAllUserNotes().subscribe(data => {
+      this.userService.getAllUserNotes().subscribe(data => {
       console.log("Response to Display", data['data']['data']);
       this.cards= data['data']['data'];
       console.log(this.cards);

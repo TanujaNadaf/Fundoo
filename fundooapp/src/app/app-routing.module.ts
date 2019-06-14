@@ -8,6 +8,7 @@ import { RemindersComponent } from './components/reminders/reminders.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { SearchComponent } from './search/search.component';
 const routes: Routes = [
   {
     path: '', redirectTo: 'login', pathMatch: 'full' 
@@ -38,8 +39,10 @@ const routes: Routes = [
       },
       {
         path:'trash',component:TrashComponent
-      }
+      },
+      
     ]
+  
   },
 
 ];

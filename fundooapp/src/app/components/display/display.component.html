@@ -1,5 +1,5 @@
 <div  fxLayout="row wrap" fxLayoutGap="5px" fxLayoutAlign="center stretch">
-<div *ngFor="let data of allCards" >
+    <div *ngFor="let data of allCards" >
     <div *ngIf="!data.isDeleted && !data.isArchived">
     <mat-card [ngStyle]="{'background-color':data.color}" fxFlex='100'  style="margin-top:50px;">
     <div class="row"(click)="openDialog(data)">

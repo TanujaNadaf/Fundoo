@@ -7,7 +7,7 @@
 
     <mat-form-field class="search" [style.font-size.px]="7" fxFlex="50" appearance="outline">
       <div fxLayout="row">
-        <mat-icon>search</mat-icon><input autocomplete="off" matInput class="input">
+        <mat-icon>search</mat-icon><input autocomplete="off" matInput class="input" [(ngModel)]="text">
       </div>
     </mat-form-field>
     <mat-icon class="refresh">refresh</mat-icon>
@@ -42,7 +42,7 @@
         <p class="label">LABELS</p>
         
           
-            
+               
                <div *ngFor="let details of allLabels">
               <a mat-list-item fxLayout="row" class="link">
               <div class="editoutline">
@@ -75,7 +75,11 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <router-outlet></router-outlet>
+      <div *ngIf="!text">
+      <router-outlet></router-outlet></div>
+    <div *ngIf="text">
+      <app-search  [searchText]="text"></app-search>
+    </div>
     </mat-sidenav-content>
     
   </mat-sidenav-container>

@@ -3,7 +3,7 @@
   </div>
   <div fxLayout="row" fxLayoutAlign="end center">
   <div class="cancelIcon">
-  <button  mat-button >Cancel</button>
+  <button  mat-button (click)="onNoClick()">Cancel</button>
   </div>
   <div class="deleteicon">
-  <button  mat-button (click)="deleteLabel()">Delete</button></div></div>
+  <button  mat-button (click)="deleteLabel()" (click)="onNoClick()">Delete</button></div></div>

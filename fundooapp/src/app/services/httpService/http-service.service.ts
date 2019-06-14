@@ -31,7 +31,7 @@ export class HttpServiceService {
     };
     return this.http.get(this.dbUrl+url,httpOptions);
   }
-  delete(url,label){
-    return this.http.delete(this.dbUrl+url,label);
+  delete(url){
+    return this.http.delete(this.dbUrl+url);
   }
 }

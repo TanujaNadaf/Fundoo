@@ -8,14 +8,22 @@
 </div>
 
 <div *ngFor="let details of labels">
-    <div fxFlex='100' fxLayout="row" class="row">
-        <div fxFlex="16">
-            <app-delete [label]="details"></app-delete>
+     <div *ngIf="details.isDeleted==false">
+        <div fxFlex='100' fxLayout="row" class="row">
+            <div fxFlex="16">
+                <app-delete [label]="details"></app-delete>
+            </div>
+            <div fxFlex="68"  >
+               
+                <input matInput class="labelName" autocomplete="off" placeholder="Enter label" [(ngModel)]="details.label" (click)="changeIcon(details.id)">
+            
+            </div>
+            <div fxFlex='16' class="editImage" >
+                <img src="../../assets/images/baseline-create.svg" *ngIf="labelId!=details.id">
+                <div (click)="updateLabel(details)">
+                <img src="../../assets/images/outline-check.svg" *ngIf="labelId==details.id" ></div>
+            </div>
         </div>
-        <div fxFlex='68' class="labelName">{{details.label}}</div>
-        <div fxFlex='16' class="editImage">
-            <img src="../../assets/images/baseline-create.svg"></div>
-
     </div>
 </div>
 <div class="divider">

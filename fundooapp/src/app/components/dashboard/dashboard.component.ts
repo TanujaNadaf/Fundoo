@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditlabelsComponent } from '../../editlabels/editlabels.component'
-import {UserServiceService} from '../../services/userService/user-service.service';
+import {UserServiceService} from '../../services/userService/user-service.service'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-allLabels=[];
-  
+@Input() text:string;
+  allLabels=[];
+  details;
+  cards;
 constructor(private router:Router,public dialog: MatDialog,private userService:UserServiceService) { }
 
   ngOnInit() {
@@ -35,7 +37,8 @@ openTrash(){
 }
 openEditLabels(){
   console.log('in edit labels');
-  this.dialog.open(EditlabelsComponent);
+  
+  this.dialog.open(EditlabelsComponent)
 }
 getAllLabels(){
   this.userService.getAllLabels().subscribe(response => {
@@ -48,5 +51,8 @@ getAllLabels(){
   }, error => {
     console.log("Error in Displaying Notes", error);
   })
+}
+recieveMessageEvent($event){
+  this.getAllLabels();
 }
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit,Input} from '@angular/core';
+import { Component, OnInit,Input,Inject} from '@angular/core';
 import { UserServiceService } from '../../services/userService/user-service.service';
 import { LabelModel } from 'src/app/models/labelModel';
+import {MAT_DIALOG_DATA,MatDialogRef} from '@angular/material';
 @Component({
   selector: 'app-deletelabel',
   templateUrl: './deletelabel.component.html',
@@ -9,26 +10,27 @@ import { LabelModel } from 'src/app/models/labelModel';
 export class DeletelabelComponent implements OnInit {
 
 
-  constructor(private userService: UserServiceService) {
+  constructor(private userService: UserServiceService,@Inject(MAT_DIALOG_DATA) public data: any,public dialogRef: MatDialogRef<DeletelabelComponent>,) {
     
    }
   ngOnInit() {
+    console.log(this.data);
   }
   
   deleteLabel(){
     console.log("In delete labels function");
-    console.log('in delete ',this.data);
-    /*const label = {
-      'id':this.data['id']
-}
-    console.log("label in delete label component",label);
-    this.userService.delete(label).subscribe(response => {
+    console.log('in delete labels function ',this.data);
+    this.userService.deleteLabel(this.data.id).subscribe(response => {
 
       console.log("Response to delete label", response);
      // this.messageEvent.emit();
       }, error => {
       console.log("error in deleting label", error);
-    })*/
+    })
   
   }
+  onNoClick():
+  void {
+  this.dialogRef.close();
+}
 }
