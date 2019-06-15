@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { DataService } from "../../services/data.service";
-import { MatCardSmImage } from '@angular/material';
 
+import { text } from '@angular/core/src/render3';
 
 
 export interface DialogData {
@@ -17,12 +17,14 @@ export interface DialogData {
 })
 export class DisplayComponent implements OnInit {
   @Input() allCards=[];
+  @Input() text;
  
   
   card;
   @Output() messageEvent = new EventEmitter<any>()
   constructor(public dialog: MatDialog, public data: DataService) { 
-    console.log(this.allCards);
+    //console.log(this.allCards);
+    //console.log(this.text);
   }
   ngOnInit() {
     

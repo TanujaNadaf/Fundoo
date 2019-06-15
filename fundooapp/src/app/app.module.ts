@@ -33,8 +33,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { EditlabelsComponent } from './editlabels/editlabels.component';
 import { DeletelabelComponent } from './components/deletelabel/deletelabel.component';
 import { DeleteComponent } from './components/delete/delete.component';
-import { FilterPipe} from './search/filter.pipe';
 import { SearchComponent } from './search/search.component';
+import { SearchPipe } from './components/pipe/search.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,6 @@ import { SearchComponent } from './search/search.component';
     DashboardComponent,
     NotesComponent,
     AddNoteComponent,
-    FilterPipe,
     RemindersComponent,
     ArchiveComponent,
     TrashComponent,
@@ -55,6 +54,7 @@ import { SearchComponent } from './search/search.component';
     DeletelabelComponent,
     DeleteComponent,
     SearchComponent,
+    SearchPipe,
     
   ],
   imports: [
