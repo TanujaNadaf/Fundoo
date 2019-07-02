@@ -3,11 +3,9 @@
     padding:10px;
 }
 .name{
-    opacity: .54;;
-    margin-top: 2px;
+    margin-top: 13px;
     font-size: 14px;
-    //border-bottom:1px solid grey;
-    margin-right:70px;
+    margin-left:2px;
 }
 
 ::ng-deep .mat-dialog-container {
@@ -24,44 +22,42 @@
 .divider{
     margin-top: 10px;
 }
-.checkImage{
-    opacity: .54;
-    padding:10px;
-}
+
 .labelImage{
     margin-top:2px;
-    
     opacity:.54;
 }
 .editImage{
     opacity: .54;
     margin-top:12px;
+    cursor:pointer;
 }
-.row{
-    padding:10px;
-}
+
 .labelName{
     margin-top:15px;
     opacity: .9;
-    
+    margin-left: 13px;
 }
-
-/*.clearImage{
-    opacity: .54;;
+.labelImage{
+    opacity: .54;
+    padding: 10px;
+    cursor:pointer;
+}
+.icon{
+    opacity: .54;
+    cursor:pointer;
+}
+::placeholder{
+    opacity:.9;
+}
+.checkImage{
+    opacity:.54;
+    margin-top: 10px;
+    cursor:pointer;
+}
+.column{
     padding:10px;
 }
-.name{
-    opacity: .54;;
-    margin-top: 15px;
-    padding-right: 100px;
-}
+.SvgImage img{ width:50%; height:30%;}
 
 
-
-
-
-
-.labelName{
-    opacity:.54;
-    margin-left: 10px;
-}*/

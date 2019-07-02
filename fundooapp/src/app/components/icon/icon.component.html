@@ -1,7 +1,101 @@
 <div style="display:flex">
-  <img src="../../../assets/images/reminder.svg" style="margin-top:25px">
-  <img src="../../../assets/images/personadd.svg" style="margin-top:25px;margin-left:10px">
-  <button mat-icon-button [matMenuTriggerFor]="abovemenu" style="margin-top:25px;margin-left:10px">
+  <button mat-icon-button [matMenuTriggerFor]="remindermenu" style="margin-top:15px;cursor:pointer">
+  <img src="../../../assets/images/reminder.svg">
+  
+  <mat-menu #remindermenu="matMenu">
+      
+    <div *ngIf="show==false">
+        
+              
+    <div class="heading">Reminder:</div>
+    <button mat-menu-item (click)="remindMeToday()" >
+      <span class="day">Later today</span>
+      <span class="time">8:00PM</span>
+    </button>
+    <button mat-menu-item (click)="remindMeTomorrow()">
+      <span class="day">Tomorrow</span>
+      <span class="Ttime">8:00AM</span>
+    </button>
+    <button mat-menu-item (click)="remindNextWeek()">
+      <span class="day">Next week</span>
+      <span class="Wtime">Mon,8:00AM</span>
+    </button>
+    <button mat-menu-item (click)="show=!show" (click)="$event.stopPropagation()">
+      <div fxLayout="row">
+      <img class="schedule" src="../../../assets/images/outline-schedule-24px.svg">
+      <span class="detail" >Pick date & time</span></div> 
+      
+    
+     
+    </button>
+  </div>
+  <div *ngIf="show==true" (click)="$event.stopPropagation()" (click)="hide=true"> 
+    <div fxLayout="row">
+    <div>
+      <img class="backimage" src="../../../assets/images/outline-keyboard_backspace-24px.svg" (click)="show=!show" (click)="$event.stopPropagation()">
+    </div>
+      <span class="back">Pick date & time</span>
+    </div>
+      <div class="divider">
+          <mat-divider></mat-divider>
+      </div>
+      <div>  
+        <div class="dateinput">
+        <mat-form-field>
+          <input matInput class="choosedate" [matDatepicker]="picker" placeholder="Choose a date"(click)="show=true" (click)="$event.stopPropagation()" [(ngModel)]="reminderBody.date.value">
+          <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+          </div></div>
+          
+         <div class="timeclass" aria-label="Number" (click)="show=true" (click)="$event.stopPropagation()">
+              
+          <div fxLayout="row">
+              <input class="timename" placeholder="Choose time"  matInput  [matAutocomplete]="auto" [(ngModel)]="reminderBody.time">
+             
+              </div>
+              
+              <mat-autocomplete #auto="matAutocomplete">
+                  <div *ngIf="!hide " (click)="$event.stopPropagation()">
+                <mat-option *ngFor="let option of options" [value]="option.time">
+                   
+                     
+                    <div fxLayout="row" fxLayoutAlign="space-between center"> <div class="period"> {{option.name}}</div>
+                    <div class="periodtime" fxFlexOffset='18'> {{option.time}} </div></div>
+
+                  
+               
+                
+                    
+                </mat-option></div>
+              </mat-autocomplete>
+            
+      </div>
+      <div class="chooseperiod">
+      <mat-form-field class="instance"(click)="$event.stopPropagation()">
+          <mat-label>Choose period</mat-label>
+          <mat-select (click)="show=true" >
+            <mat-option *ngFor="let option of instance" [value]="option.name">
+              {{option.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field></div>
+        <div>
+          <button mat-button style="margin-left:160px" (click)=saveReminder(reminderBody.date.value,reminderBody.time)>Save</button>
+    
+        </div>
+       
+    
+    
+    
+    </div>
+  </mat-menu>
+</button>
+
+  <img src="../../../assets/images/personadd.svg" style="margin-top:15px;margin-left:10px;cursor:pointer">
+  <button mat-icon-button [matMenuTriggerFor]="abovemenu" style="margin-top:15px;margin-left:10px">
     <img src="../../../assets/images/colorslens.svg">
     <mat-menu #abovemenu="matMenu" yPosition="above">
       <table>
@@ -16,37 +110,14 @@
       </table>
 
 
-      <!-- <table>
-          <tr *ngFor="let row of data">
-              <td *ngFor="let value of row">{{value}}</td>
-          </tr>
-      </table> -->
-
-
-      <!--button mat-mini-fab class="button1" (click)="changeColor('transparent')"></button>
-      <button mat-mini-fab class="button2" (click)="changeColor('#FA8072',cards)"></button>
-      <button mat-mini-fab class="button3" (click)="changeColor('#FFA500',cards)"></button>
-      <button mat-mini-fab class="button4" (click)="changeColor()"></button>
-    </div>
-    <div class="example-button-row">
-      <button mat-mini-fab class="button5"></button>
-      <button mat-mini-fab class="button6"></button>
-      <button mat-mini-fab class="button7"></button>
-      <button mat-mini-fab class="button8"></button>
-    </div>
-    <div class="example-button-row">
-      <button mat-mini-fab class="button9"></button>
-      <button mat-mini-fab class="button10"></button>
-      <button mat-mini-fab class="button11"></button>
-      <button mat-mini-fab class="button12"></button>-->
-
+     
     </mat-menu>
   </button>
-  <img src="../../../assets/images/addimage.svg" style="margin-top:25px;margin-left:10px">
+  <img src="../../../assets/images/addimage.svg" style="margin-top:15px;margin-left:10px;cursor:pointer">
 
-  <img src="../../../assets/images/archive.svg" style="margin-top:25px;margin-left:10px" (click)="archiveNote()">
+  <img src="../../../assets/images/archive.svg" style="margin-top:15px;margin-left:10px;cursor:pointer" (click)="archiveNote()">
 
-  <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-top:25px;margin-left:10px">
+  <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-top:15px;margin-left:10px;cursor:pointer">
     <img src="../../../assets/images/outline-more_vert.svg">
     <mat-menu #menu="matMenu">
 
@@ -63,8 +134,24 @@
       <button mat-menu-item>
         <span>Make a copy</span>
       </button>
+      <button mat-menu-item (click)="deleteForever()">
+        <span>Delete Forever</span>
+      </button>
 
     </mat-menu>
 
   </button>
 </div>
+
+
+
+
+<!---div *ngIf="show==true">
+        
+          <div fxLayout="row">
+              <div class="arrow">
+          <img class="backimage" src="../../../assets/images/outline-keyboard_backspace-24px.svg"> </div>
+          <span class="back">Pick date & time</span></div>
+          
+         
+       </div>-->

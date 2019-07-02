@@ -32,10 +32,13 @@ import { DialogComponent } from './dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditlabelsComponent } from './editlabels/editlabels.component';
 import { DeletelabelComponent } from './components/deletelabel/deletelabel.component';
-import { DeleteComponent } from './components/delete/delete.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { SearchComponent } from './search/search.component';
 import { SearchPipe } from './components/pipe/search.pipe';
-
+import {MatNativeDateModule } from '@angular/material';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSelectModule} from '@angular/material/select';
+import {MatChipsModule} from '@angular/material/chips'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +55,7 @@ import { SearchPipe } from './components/pipe/search.pipe';
     DialogComponent,
     EditlabelsComponent,
     DeletelabelComponent,
-    DeleteComponent,
+    
     SearchComponent,
     SearchPipe,
     
@@ -68,9 +71,9 @@ import { SearchPipe } from './components/pipe/search.pipe';
     MatButtonModule,
     FormsModule, ReactiveFormsModule,
     HttpClientModule,MatDividerModule,MatGridListModule,MatToolbarModule,MatSidenavModule,
-    MatListModule,MatButtonToggleModule,MatIconModule,MatMenuModule,MatExpansionModule,MatSnackBarModule,MatDialogModule
+    MatListModule,MatButtonToggleModule,MatIconModule,MatMenuModule,MatExpansionModule,MatSnackBarModule,MatDialogModule,MatDatepickerModule,MatNativeDateModule,MatAutocompleteModule,MatSelectModule,MatChipsModule
   ],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
   entryComponents:[DialogComponent,EditlabelsComponent,DeletelabelComponent ]
 })

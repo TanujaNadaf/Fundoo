@@ -1,17 +1,84 @@
-
-<div fxLayout="row wrap" fxLayoutGap="5px" fxLayoutAlign="center stretch">
-    
-
-        <div *ngFor="let data of allCards | filter:text">
-            <div *ngIf="!data.isDeleted && !data.isArchived">
-                <mat-card [ngStyle]="{'background-color':data.color}" fxFlex='100' style="margin-top:50px;">
-                    <div class="row" (click)="openDialog(data)">
-                        {{data.title}}
-                    </div>
-                    {{data.description}}
-                    <app-icon [cards]="data" (messageEvent)="eventOccur()"></app-icon>
-
-                </mat-card>
-            </div>
+<div class="center" fxLayoutGap="4px" fxLayoutAlign="center center">
+  <div *ngFor="let data of allCards | filter:text">
+    <div *ngIf="!data.isDeleted && !data.isArchived">
+      <mat-card [ngStyle]="{'background-color':data.color}" style="margin-top:50px;">
+        <div fxLayout="row" (click)="openDialog(data)">
+          {{data.title}}
         </div>
+        <div class="description" fxLayout="row" (click)="openDialog(data)">
+          {{data.description}}
+        </div>
+        <div *ngIf="remiderCutOff(data.reminder[0])">
+          <div *ngIf="data.reminder.length!=0">
+            <div *ngFor="let remin  of data.reminder">
+              <mat-chip-list >
+              
+                <div *ngIf="(today | date:shortDate)==(remin | date:shortDate)" class="matchip">
+                  <mat-chip style="font-size:11px;font-family: arial;letter-spacing:0in"><img class="scheduleimage"
+                      src="../../../assets/images/outline-schedule-24px.svg"> Today, {{remin | date:'shortTime'}}
+                    <mat-icon matChipRemove (click)="removeReminder(data.id,data.reminder)">cancel</mat-icon>
+                  </mat-chip>
+                </div>
+                <div *ngIf="(tomorrow | date:shortDate)==(remin | date:shortDate)" class="matchip">
+                  <mat-chip style="font-size:11px;font-family: arial;letter-spacing:0in"><img class="scheduleimage"
+                    src="../../../assets/images/outline-schedule-24px.svg"> Tomorrow, {{remin | date:'shortTime'}}
+                  <mat-icon matChipRemove (click)="removeReminder(data.id,data.reminder)">cancel</mat-icon>
+                </mat-chip>
+                </div>
+                <div *ngIf="(tomorrow | date:shortDate)!=(remin | date:shortDate) 
+                && (today | date:shortDate)!=(remin | date:shortDate)" class="matchip">
+                <mat-chip style="font-size:11px;font-family: arial;letter-spacing:0in"><img class="scheduleimage"
+                  src="../../../assets/images/outline-schedule-24px.svg">{{remin | date:'mediumDate'}} {{remin| date:'shortTime'}}
+                <mat-icon matChipRemove (click)="removeReminder(data.id,data.reminder)">cancel</mat-icon>
+              
+        </mat-chip>
+      </div>
+
+                
+              </mat-chip-list>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!remiderCutOff(data.reminder[0])">
+          <div *ngIf="data.reminder.length!=0">
+            <div *ngFor="let remin  of data.reminder">
+              <mat-chip-list >
+                
+                <div *ngIf="(today | date:shortDate)==(remin | date:shortDate)" class="matchip">
+                  <mat-chip style="font-size:11px;font-family: arial;letter-spacing:0in"><img class="scheduleimage"
+                      src="../../../assets/images/outline-schedule-24px.svg"> Today, {{remin | date:'shortTime'}}
+                    <mat-icon matChipRemove (click)="removeReminder(data.id,data.reminder)">cancel</mat-icon>
+                  </mat-chip>
+                </div>
+                <div *ngIf="(tomorrow | date:shortDate)==(remin | date:shortDate)" class="matchip">
+                  <mat-chip style="font-size:11px;font-family: arial;letter-spacing:0in"><img class="scheduleimage"
+                    src="../../../assets/images/outline-schedule-24px.svg"> Tomorrow, {{remin | date:'shortTime'}}
+                  <mat-icon matChipRemove (click)="removeReminder(data.id,data.reminder)">cancel</mat-icon>
+                </mat-chip>
+                </div>
+                <div *ngIf="(tomorrow | date:shortDate)!=(remin | date:shortDate) 
+                && (today | date:shortDate)!=(remin | date:shortDate)" class="matchip">
+                <mat-chip style="font-size:11px;font-family: arial;letter-spacing:0in"><img class="scheduleimage"
+                  src="../../../assets/images/outline-schedule-24px.svg">{{remin | date:'mediumDate'}} {{remin| date:'shortTime'}}
+                <mat-icon matChipRemove (click)="removeReminder(data.id,data.reminder)">cancel</mat-icon>
+              
+        </mat-chip>
+      </div>
+
+                
+              </mat-chip-list>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+       
+        <app-icon [cards]="data" (messageEvent)="eventOccur()" (messageEvent)="reminderEvent()"></app-icon>
+
+      </mat-card>
     </div>
+  </div>
+</div>

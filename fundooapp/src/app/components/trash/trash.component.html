@@ -1,4 +1,4 @@
-<div  fxLayout="row wrap" fxLayoutGap="6px" fxLayoutAlign="center center">
+<div class="trashnotes" fxLayout="row wrap" fxLayoutGap="6px" fxLayoutAlign="center center">
         <div *ngFor="let data of cards" >
             <div *ngIf="data.isDeleted">
             <mat-card  fxFlex='100'  style="margin-top:50px;">
@@ -6,7 +6,7 @@
             {{data.title}}
             </div>
             {{data.description}}
-             <app-icon></app-icon>
+             <app-icon [deletedCard]="data" (messageEvent)="receiveDeleteForeverEvent()"></app-icon>
             
             </mat-card>
         

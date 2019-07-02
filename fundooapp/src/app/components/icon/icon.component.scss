@@ -188,3 +188,84 @@ width: 30px;
 .button:hover{
     border:1px solid black;
 }
+.heading {
+    padding:10px;
+    opacity:1;
+    font-size: 14px;
+    font-family: arial;
+    padding-bottom: 10px;
+}
+.time{
+    margin-left:115px;
+    opacity:0.9;
+    font-family: arial;
+}
+.day{
+    font-family:arial;
+    opacity:0.9;
+}
+.Ttime{
+    margin-left:124px;
+    opacity:0.9;
+    font-family: arial;
+}
+.Wtime{
+  margin-left: 90px;
+  opacity:0.9;
+  font-family: arial;
+}
+.schedule{ opacity:.7;}
+.detail{margin-left:10px;margin-top: 2px;opacity:0.9;font-family: arial;}
+.back{margin-left:10px;margin-right:110px;font-family:arial;font-size:14px;opacity:0.7;margin-top:5px;}
+.backimage{opacity:0.7;margin-left:10px;cursor:pointer}
+.arrow:hover{cursor:pointer;opacity:0.9;}
+.dateinput{
+    font-size:10px;
+}
+::placeholder{
+    font-size:12px;font-family:arial;opacity: 0.9;
+}
+.mat-form-field{
+    font-size:12px;font-family:arial;
+}
+.choosedate{
+    font-size:10px;font-family:arial;width:100%;
+}
+.dateinput{
+    margin-left:15px;
+    margin-top:10px;
+    
+}
+.timeclass{
+    border-bottom:1px solid gray;
+    width:78%;
+    margin-left:15px;
+    opacity:0.54px;
+    margin-top:10px;
+    
+
+}
+.period{
+    font-family: arial;
+    font-size: 14px;
+}
+.periodtime{
+    font-family: arial;
+    font-size: 14px;
+}
+.timename{
+    font-family: arial;
+    font-size: 12px;
+    
+}
+.instance{
+    margin-left:15px;
+    width:78%;
+}
+.periodname{
+    font-family: arial;
+    font-size: 12px;
+}
+.chooseperiod{
+    margin-top:10px;
+}

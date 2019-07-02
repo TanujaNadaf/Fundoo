@@ -18,7 +18,7 @@ addDescriptionFormControl=new FormControl('',[]);
   ngOnInit() {
     
   }
-  show=true;
+  show=false;
   addNotes(){
     const addNotesModel=new AddNotes();
     console.log('in add notes');

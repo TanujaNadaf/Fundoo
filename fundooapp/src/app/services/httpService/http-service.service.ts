@@ -14,7 +14,7 @@ export class HttpServiceService {
     const httpOptions = {
       headers: new HttpHeaders(
         {
-          'Authorization': localStorage.getItem('token'),
+          Authorization: localStorage.getItem('token'),
           'Content-Type' : 'application/json'
         })
     };
@@ -25,7 +25,7 @@ export class HttpServiceService {
     const httpOptions = {
       headers: new HttpHeaders(
         {
-          'Authorization':localStorage.getItem('token'),
+          Authorization: localStorage.getItem('token'),
           'Content-Type' : 'application/json'
         })
     };

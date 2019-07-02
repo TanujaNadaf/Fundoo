@@ -1,16 +1,16 @@
 <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 30px;">
  <mat-card fxFlex="45" >
-   <div *ngIf="!show">
+   <div *ngIf="show">
      <input autocomplete="off" class="title" matInput placeholder="Title" [formControl]="addTitleFormControl">
    </div>
-   <div (click)="show=false">
+   <div (click)="show=true">
      <input autocomplete="off" class="takenote" matInput placeholder="Take a note.."[formControl]="addDescriptionFormControl">
    </div>
-   <div fxLayout="row" *ngIf="!show">
+   <div fxLayout="row" *ngIf="show">
      
    <app-icon></app-icon>
      
-     <button (click)="show=true"(click)="addNotes()" mat-button style="margin-top:20px;margin-left:120px;font-family:Roboto,Arial,sans-serif;font-weight: bold">Close</button>
+     <button (click)="show=false"(click)="addNotes()" mat-button style="margin-top:20px;margin-left:220px;font-family:Roboto,Arial,sans-serif;font-weight: bold">Close</button>
   </div>
   
  </mat-card>

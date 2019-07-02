@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditlabelsComponent } from '../../editlabels/editlabels.component'
 import {UserServiceService} from '../../services/userService/user-service.service'
+import { DataService } from "../../services/data.service";
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,10 +15,14 @@ export class DashboardComponent implements OnInit {
   allLabels=[];
   details;
   cards;
-constructor(private router:Router,public dialog: MatDialog,private userService:UserServiceService) { }
+   private list = 0;
+constructor(private router:Router,public dialog: MatDialog,private userService:UserServiceService,public data: DataService) { }
 
   ngOnInit() {
-    this.getAllLabels();
+    this.data.currentData.subscribe(labels => {
+      this.getAllLabels();
+
+    });
   }
 openNotes(){
   console.log('in openNotes');
@@ -55,4 +61,5 @@ getAllLabels(){
 recieveMessageEvent($event){
   this.getAllLabels();
 }
+
 }

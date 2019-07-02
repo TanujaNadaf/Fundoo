@@ -1,21 +1,29 @@
-<div class="heading">Edit Labels</div>
-<div fxLayout="row">
 
-    <mat-icon (click)="toggleIcon()">{{icon}}</mat-icon>
+<div class="heading">Edit Labels</div>
+<div fxLayout="column">
+<div fxLayout="row" fxFlex='100'>
+    <div fxFlex='16'>
+    <mat-icon class="icon" (click)="toggleIcon()">{{icon}}</mat-icon></div>
+    <div fxFlex='68'>
     <input autocomplete="off" matInput (click)="toggleIcon()" placeholder="Create new label" class="name"
-        [formControl]="label">
-    <img class="checkImage" *ngIf="!show" src="../../assets/images/outline-check.svg" (click)="createLabel()">
+        [formControl]="label"></div>
+    <div fxFlex='16'>
+        <img class="checkImage" *ngIf="!show" src="../../assets/images/outline-check.svg" (click)="createLabel()"></div>
 </div>
+</div>
+
 
 <div *ngFor="let details of labels">
      <div *ngIf="details.isDeleted==false">
+        
         <div fxFlex='100' fxLayout="row" class="row">
-            <div fxFlex="16">
-                <app-delete [label]="details"></app-delete>
+            <div fxFlex="16" class="labelImage" >
+                <img src="../../assets/images/baseline-label.svg" *ngIf="labelId!=details.id">  
+                <img src="../../assets/images/baseline-delete.svg" *ngIf="labelId==details.id" (click)="openDeleteLabel(details)" (messaageEvent)="receiveMessage($event)" >
             </div>
             <div fxFlex="68"  >
                
-                <input matInput class="labelName" autocomplete="off" placeholder="Enter label" [(ngModel)]="details.label" (click)="changeIcon(details.id)">
+                <input matInput class="labelName" autocomplete="off" placeholder="Enter label" [(ngModel)]="details.label" (click)="changeIcon(details.id)" >
             
             </div>
             <div fxFlex='16' class="editImage" >
@@ -24,6 +32,7 @@
                 <img src="../../assets/images/outline-check.svg" *ngIf="labelId==details.id" ></div>
             </div>
         </div>
+        
     </div>
 </div>
 <div class="divider">

@@ -23,5 +23,8 @@ export class TrashComponent implements OnInit {
     })
     
   }
+  receiveDeleteForeverEvent(){
+    this.allDeletedNotes();
   }
+}
 

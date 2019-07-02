@@ -1,28 +1,31 @@
-import { Component, OnInit,EventEmitter,Output } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { MatDialogRef} from '@angular/material/dialog';
 import {UserServiceService} from '../services/userService/user-service.service';
-//import{LabelModel} from '../models/labelModel';
-
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import{DeletelabelComponent} from '../components/deletelabel/deletelabel.component';
+import { DataService } from "../services/data.service";
 @Component({
   selector: 'app-editlabels',
   templateUrl: './editlabels.component.html',
   styleUrls: ['./editlabels.component.scss']
 })
 export class EditlabelsComponent implements OnInit{
-  @Output() messageEvent =new EventEmitter<any>()
+  
   label=new FormControl();
   public icon = 'add'; 
 labelId;
 show=true;
 labels=[];
-hide = false;
-  constructor(private userService:UserServiceService,public dialogRef: MatDialogRef<EditlabelsComponent>) { }
+
+
+  constructor(private userService:UserServiceService,public dialogRef: MatDialogRef<EditlabelsComponent>,public dialog: MatDialog,public data: DataService) { }
 
   ngOnInit() {
-    
-    this.getAllLabels();
+  this.data.currentData.subscribe(label => {
+      this.getAllLabels();
+
+    });
   }
   
 createLabel(){
@@ -31,15 +34,16 @@ createLabel(){
   //labelModel.label=this.label.value;
   //console.log(labelModel);
   const labelObject={
-   'label':this.label.value,
+   'label': this.label.value,
    'isDeleted':false,
-    'userId': '5ce8cedf2571b100409f65a8'
+    'userId': '5d1200171488d10040086b39'
   
 }
 console.log(labelObject);
   this.userService.createLabel(labelObject).subscribe(response=>{
     console.log("Response to create label",response);
-     this.messageEvent.emit();
+     //this.messageEvent.emit(this.getAllLabels());
+     this.data.sendData(this.labels);
   },error=>{
     console.log("Error in creating labels",error);
   })
@@ -79,11 +83,22 @@ updateLabel(labelDetails){
   this.userService.updateLabel(labelDetails.id,labelDetails).subscribe(response => {
 
     console.log("Response to update label", response);
-   // this.messageEvent.emit();
+    this.data.sendData(labelDetails);
     }, error => {
     console.log("error in updating label", error);
   })
 }
-
+openDeleteLabel(label): void {
+  console.log("in open delete label dialog");
+ // console.log(this.label);
+ 
+   this.dialog.open(DeletelabelComponent, {
+     data: label,
+     
+   });
+ }
+ receiveMessage($event){
+   this.getAllLabels();
+ }
 }
 
