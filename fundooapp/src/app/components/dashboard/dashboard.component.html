@@ -11,16 +11,43 @@
       </div>
     </mat-form-field>
     <mat-icon class="refresh">refresh</mat-icon>
-    <img class="grid" src="../../../assets/images/ListView.svg" >
+    <img class="grid" src="../../../assets/images/ListView.svg">
     <img class="settings" fxHide.xs src="../../../assets/images/settings.svg">
     <mat-icon class="apps">apps</mat-icon>
-    <button mat-mini-fab [matMenuTriggerFor]="Menu" color="primary">T</button>
-    <mat-menu #Menu="matMenu">
-      <button mat-mini-fab color="primary">T</button>
-      <span class="account-name">Tanuja Nadaf</span>
-    </mat-menu>
+    <div *ngIf="image2!=''">
+      <button mat-mini-fab [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover'}"
+        [matMenuTriggerFor]="menu" class="profilepic">
+
+      </button>
+    </div>
+    
+      <mat-menu #menu="matMenu" >
+        <div fxLayout="row" >
+         <button class="profilebutton" *ngIf="image2!=''" (click)="$event.stopPropagation()"
+                [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover'}" (click)="selectFile.click()"
+                mat-mini-fab>
+                <input style="display:none" (click)="$event.stopPropagation()" class="image" type="file"
+                  (change)="onFileUpload($event)" #selectFile>
+               
+              </button>
+           <div fxLayout="row" fxLayoutalign="space-between" fxLayoutGap="5%">
+             <div>{{firstname}}</div>
+             <div>{{lastname}}</div>
+           </div>
+         
+            </div>
+
+        
+        <div>
+          <mat-divider></mat-divider>
+        </div>
+
+      </mat-menu>
+    
   </div>
-  
+
+
+
   <mat-divider></mat-divider>
 
   <mat-sidenav-container class="example-sidenav-container">
@@ -28,7 +55,7 @@
     <mat-sidenav #snav [mode]='side'>
       <mat-nav-list>
 
-        <a mat-list-item class="link" (click) ="openNotes()">
+        <a mat-list-item class="link" (click)="openNotes()">
           <mat-icon class="icon">lightbulb_outline</mat-icon>
           <span class="name">Notes</span>
         </a>
@@ -40,22 +67,22 @@
           <mat-divider></mat-divider>
         </div>
         <p class="label">LABELS</p>
-        
-          
-               
-               <div *ngFor="let details of allLabels">
-              <a mat-list-item fxLayout="row" class="link">
-              <div class="editoutline">
-              <img  src="../../assets/images/outline-label.svg" ></div>
-              <div class="dashboardEditName" >{{details.label}}</div>
-            </a>
-            </div>
-       
+
+
+
+        <div *ngFor="let details of allLabels">
+          <a mat-list-item fxLayout="row" class="link">
+            <div class="editoutline">
+              <img src="../../assets/images/outline-label.svg"></div>
+            <div class="dashboardEditName">{{details.label}}</div>
+          </a>
+        </div>
+
         <a mat-list-item class="link" (click)="openEditLabels()">
           <mat-icon class="icon">
             <img src="../../../assets/images/edit.svg">
           </mat-icon>
-          <span class="name" >Edit labels</span>
+          <span class="name">Edit labels</span>
         </a>
         <div class="divider">
           <mat-divider></mat-divider>
@@ -76,12 +103,13 @@
 
     <mat-sidenav-content>
       <div *ngIf="!text">
-      <router-outlet></router-outlet></div>
-    <div *ngIf="text">
-      <app-search  [searchText]="text"></app-search>
-    </div>
+        <router-outlet></router-outlet>
+      </div>
+      <div *ngIf="text">
+        <app-search [searchText]="text"></app-search>
+      </div>
     </mat-sidenav-content>
-    
+
   </mat-sidenav-container>
- 
+
 </div>

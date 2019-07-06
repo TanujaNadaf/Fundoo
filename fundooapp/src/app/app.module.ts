@@ -38,7 +38,10 @@ import { SearchPipe } from './components/pipe/search.pipe';
 import {MatNativeDateModule } from '@angular/material';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
-import {MatChipsModule} from '@angular/material/chips'; 
+import {MatChipsModule} from '@angular/material/chips';
+import { CropimageComponent } from './components/cropimage/cropimage.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +61,7 @@ import {MatChipsModule} from '@angular/material/chips';
     
     SearchComponent,
     SearchPipe,
+    CropimageComponent,
     
   ],
   imports: [
@@ -71,10 +75,11 @@ import {MatChipsModule} from '@angular/material/chips';
     MatButtonModule,
     FormsModule, ReactiveFormsModule,
     HttpClientModule,MatDividerModule,MatGridListModule,MatToolbarModule,MatSidenavModule,
-    MatListModule,MatButtonToggleModule,MatIconModule,MatMenuModule,MatExpansionModule,MatSnackBarModule,MatDialogModule,MatDatepickerModule,MatNativeDateModule,MatAutocompleteModule,MatSelectModule,MatChipsModule
+    MatListModule,MatButtonToggleModule,MatIconModule,MatMenuModule,MatExpansionModule,MatSnackBarModule,MatDialogModule,MatDatepickerModule,MatNativeDateModule,MatAutocompleteModule,MatSelectModule,MatChipsModule,ImageCropperModule,
+    
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
-  entryComponents:[DialogComponent,EditlabelsComponent,DeletelabelComponent ]
+  entryComponents:[DialogComponent,EditlabelsComponent,DeletelabelComponent, CropimageComponent ]
 })
 export class AppModule { }

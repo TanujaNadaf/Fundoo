@@ -32,6 +32,11 @@ export class LoginComponent implements OnInit {
 
       console.log("Login Successfull", data);
      localStorage.setItem('token',data["id"]); 
+     localStorage.setItem('firstname', data['firstName']);
+     localStorage.setItem('lastname', data['lastName']);
+     localStorage.setItem('email', data['email']);
+    //localStorage.setItem('userId', data['userId']);
+     localStorage.setItem('imageUrl', data['imageUrl']);
      this.router.navigate(['dashboard']);
     },      error => {
           console.log("Error in login", error);

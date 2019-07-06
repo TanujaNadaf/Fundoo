@@ -10,9 +10,11 @@ import { Router } from '@angular/router';
 })
 export class AddNoteComponent implements OnInit {
   cards;
+  title;
+  description;
   @Output() messageEvent =new EventEmitter<any>()
-addTitleFormControl=new FormControl('',[]);
-addDescriptionFormControl=new FormControl('',[]);
+//addTitleFormControl=new FormControl('',[]);
+//addDescriptionFormControl=new FormControl('',[]);
   constructor(private userService:UserServiceService) { }
   
   ngOnInit() {
@@ -20,14 +22,18 @@ addDescriptionFormControl=new FormControl('',[]);
   }
   show=false;
   addNotes(){
-    const addNotesModel=new AddNotes();
+    //const addNotesModel=new AddNotes();
     console.log('in add notes');
-    console.log(this.addTitleFormControl.value);
-    console.log(this.addDescriptionFormControl.value);
-    addNotesModel.title=this.addTitleFormControl.value;
-    addNotesModel.description=this.addDescriptionFormControl.value;
-    console.log(addNotesModel);
-    this.userService.addNotes(addNotesModel).subscribe(data=>{
+     console.log('title in addnotes',this.title)
+     console.log('description in addnotes',this.description)
+     const note={
+       "title":this.title,
+       "description":this.description
+     }
+    
+    
+   
+    this.userService.addNotes(note).subscribe(data=>{
       console.log("Response to Add",data);
       this.messageEvent.emit();
      

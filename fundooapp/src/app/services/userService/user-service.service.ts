@@ -81,6 +81,10 @@ deleteForeverNotes(note){
   console.log('In remove reminders user service');
   return this.httpService.post('/notes/deleteForeverNotes',note);
 }
+addImage(image){
+  console.log('In add image user service');
+  return this.httpService.post('/user/uploadProfileImage',image);
+}
 }
 
 

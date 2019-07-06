@@ -19,15 +19,15 @@ export interface DialogData {
 export class DisplayComponent implements OnInit {
   @Input() allCards = [];
   @Input() text;
-  reminderarray = [];
-  result=[];
+  public reminderarray = [];
+  public result=[];
   
-date1:any;
-time:any;
-todaydate:any;
+  date1:any;
+  time:any;
+  todaydate:any;
 
 date2:any;
-  card;
+  cards=[];
   show=""
   @Output() messageEvent = new EventEmitter<any>()
   private today = new Date();
@@ -40,7 +40,7 @@ private tomorrow = new Date(this.today.getFullYear(), this.today.getMonth(), thi
   }
   
   ngOnInit() {
-    this.getAllReminders();
+    //this.getAllReminders();
     
   }
 
@@ -54,32 +54,12 @@ private tomorrow = new Date(this.today.getFullYear(), this.today.getMonth(), thi
   eventOccur() {
     this.messageEvent.emit();
   }
-  reminderEvent() {
-    this.getAllReminders();
-  }
-  getAllReminders() {
-    console.log("In get all reminders function");
-    
-    this.userService.getAllReminders().subscribe(response => {
-
-      console.log("Response to get all reminders", response);
-      
-      this.result= response['data']['data']
-      console.log("Result is",this.result);
-      /*let date=this.result[0].reminder[0];
-      console.log(date);
-      this.time = new Date(`${date} UTC`).toLocaleTimeString()
-      console.log(this.time);*/
-      
-    }, error => {
-      console.log("error in getting all reminders", error);
-    })
-  }
+ 
   removeReminder(id,reminder){
     console.log("In remove reminder array");
     console.log("Note id & Reminder is",id,reminder);
     const remindermodel={
-      'noteIdList': [id],
+      noteIdList: [id]
       
     }
   this.userService.removeReminder(remindermodel).subscribe(response=>{
@@ -88,14 +68,15 @@ private tomorrow = new Date(this.today.getFullYear(), this.today.getMonth(), thi
       duration: 3000,
     })
 
-    this.messageEvent.emit(this.getAllReminders());
+    this.messageEvent.emit();
   },error=>{
      console.log("Error in deleting reminder",error);
   })
 }
 remiderCutOff(cuttOff) {
   var currentReminderTime = new Date().getTime();
-  var timeValue = new Date(cuttOff).getTime();
+   var timeValue = new Date(cuttOff).getTime();
+ 
   if (timeValue > currentReminderTime) {
     return true;
   }

@@ -131,7 +131,10 @@ export class IconComponent implements OnInit {
   remindMeToday() {
     console.log("In remind me today function");
     let date = new Date();
+    var time=date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    console.log("time is",time);
     console.log('Date is', date);
+    
     this.date1 = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 20, 0, 0, 0);
     console.log("Date Example is", this.date1);
 

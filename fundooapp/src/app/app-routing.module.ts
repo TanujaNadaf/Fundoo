@@ -9,16 +9,11 @@ import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { SearchComponent } from './search/search.component';
+
 const routes: Routes = [
-  {
-    path: '', redirectTo: 'login', pathMatch: 'full' 
-  },
-  {
-    path: 'login', component: LoginComponent
-  },
-  {
-    path: 'dialog', component: DialogComponent
-  },
+  {  path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'dialog', component: DialogComponent},
   {
     path: 'register', component: RegisterComponent
   },

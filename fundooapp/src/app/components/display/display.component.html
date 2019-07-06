@@ -39,44 +39,14 @@
             </div>
           </div>
         </div>
-        <div *ngIf="!remiderCutOff(data.reminder[0])">
-          <div *ngIf="data.reminder.length!=0">
-            <div *ngFor="let remin  of data.reminder">
-              <mat-chip-list >
-                
-                <div *ngIf="(today | date:shortDate)==(remin | date:shortDate)" class="matchip">
-                  <mat-chip style="font-size:11px;font-family: arial;letter-spacing:0in"><img class="scheduleimage"
-                      src="../../../assets/images/outline-schedule-24px.svg"> Today, {{remin | date:'shortTime'}}
-                    <mat-icon matChipRemove (click)="removeReminder(data.id,data.reminder)">cancel</mat-icon>
-                  </mat-chip>
-                </div>
-                <div *ngIf="(tomorrow | date:shortDate)==(remin | date:shortDate)" class="matchip">
-                  <mat-chip style="font-size:11px;font-family: arial;letter-spacing:0in"><img class="scheduleimage"
-                    src="../../../assets/images/outline-schedule-24px.svg"> Tomorrow, {{remin | date:'shortTime'}}
-                  <mat-icon matChipRemove (click)="removeReminder(data.id,data.reminder)">cancel</mat-icon>
-                </mat-chip>
-                </div>
-                <div *ngIf="(tomorrow | date:shortDate)!=(remin | date:shortDate) 
-                && (today | date:shortDate)!=(remin | date:shortDate)" class="matchip">
-                <mat-chip style="font-size:11px;font-family: arial;letter-spacing:0in"><img class="scheduleimage"
-                  src="../../../assets/images/outline-schedule-24px.svg">{{remin | date:'mediumDate'}} {{remin| date:'shortTime'}}
-                <mat-icon matChipRemove (click)="removeReminder(data.id,data.reminder)">cancel</mat-icon>
-              
-        </mat-chip>
-      </div>
-
-                
-              </mat-chip-list>
-            </div>
-          </div>
-        </div>
+        
 
 
 
 
 
        
-        <app-icon [cards]="data" (messageEvent)="eventOccur()" (messageEvent)="reminderEvent()"></app-icon>
+        <app-icon [cards]="data" (messageEvent)="eventOccur()"></app-icon>
 
       </mat-card>
     </div>

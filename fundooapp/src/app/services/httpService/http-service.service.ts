@@ -15,7 +15,7 @@ export class HttpServiceService {
       headers: new HttpHeaders(
         {
           Authorization: localStorage.getItem('token'),
-          'Content-Type' : 'application/json'
+          
         })
     };
       console.log(httpOptions);
