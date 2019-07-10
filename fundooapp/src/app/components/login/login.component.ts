@@ -20,10 +20,7 @@ export class LoginComponent implements OnInit {
   }
   login(){
     const loginModel = new Login();
-    //this.router.navigate(['dashboard']);
-    console.log("in login");
-    console.log(this.emailFormControl.value);
-    console.log(this.passwordFormControl.value);
+   
     loginModel.email = this.emailFormControl.value;
     loginModel.password = this.passwordFormControl.value;
     
@@ -35,7 +32,7 @@ export class LoginComponent implements OnInit {
      localStorage.setItem('firstname', data['firstName']);
      localStorage.setItem('lastname', data['lastName']);
      localStorage.setItem('email', data['email']);
-    //localStorage.setItem('userId', data['userId']);
+   
      localStorage.setItem('imageUrl', data['imageUrl']);
      this.router.navigate(['dashboard']);
     },      error => {

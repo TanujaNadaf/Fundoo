@@ -7,7 +7,7 @@ import {UserServiceService} from '../../services/userService/user-service.servic
 })
 export class TrashComponent implements OnInit {
   
-  cards;
+  public cards=[];
   constructor(private userService:UserServiceService) { }
 
   ngOnInit() {

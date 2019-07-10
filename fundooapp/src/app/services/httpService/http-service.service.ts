@@ -9,8 +9,7 @@ export class HttpServiceService {
   dbUrl=environment.url;
   constructor(private http: HttpClient) { }
   post(url,data){
-    console.log(url);
-    console.log('data in http service  ', data);
+    
     const httpOptions = {
       headers: new HttpHeaders(
         {
@@ -18,7 +17,7 @@ export class HttpServiceService {
           
         })
     };
-      console.log(httpOptions);
+     
     return this.http.post(this.dbUrl+url,data, httpOptions);
   }
   get(url) {

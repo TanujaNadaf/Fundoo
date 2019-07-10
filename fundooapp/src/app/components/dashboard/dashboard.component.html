@@ -30,18 +30,26 @@
                   (change)="onFileUpload($event)" #selectFile>
                
               </button>
-           <div fxLayout="row" fxLayoutalign="space-between" fxLayoutGap="5%">
-             <div>{{firstname}}</div>
-             <div>{{lastname}}</div>
-           </div>
+              <div fxLayout="column">
+                  <div fxLayout="row" class="row" fxLayoutGap='3%'>
+                <div>{{firstName}}</div>
+                <div>{{lastName}}</div>
+                
+              </div>
+                <div class="email">{{email}}</div>
+              </div>
          
             </div>
 
         
-        <div>
+        <div class="divider">
           <mat-divider></mat-divider>
         </div>
-
+        <div class="add" >
+            <button mat-stroked-button class="logout" (click)="logout()">
+              Log out
+            </button>
+  </div>
       </mat-menu>
     
   </div>

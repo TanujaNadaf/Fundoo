@@ -1,0 +1,27 @@
+<div class="collaborators">
+  Collaborators
+</div>
+<div class="divider">
+  <mat-divider></mat-divider>
+</div>
+<div fxLayout="row">
+  <button class="minifabbutton" mat-mini-fab  *ngIf="image2!=''" [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover'}"></button>
+  <div fxLayout="column">
+    <div fxLayout="row" class="row" fxLayoutGap='3%'>
+  <div>{{firstName}}</div>
+  <div>{{lastName}}</div>
+  <div class="owner">(owner)</div>
+</div>
+  <div class="email">{{email}}</div>
+</div>
+
+</div>
+<div class="divider">
+    <mat-divider></mat-divider>
+  </div>
+  <div fxLayout="row" fxLayoutGap="2%" class="collaborator">
+    <button mat-icon-button class="matbutton">
+    <img class="image" src="../../../assets/images/baseline-person_add-24px.svg"></button>
+    <input  [(ngModel)]="searchValue" (keyup)="searchUsers()" class="matinput" matInput placeholder="Person or email to share with">
+    <img class="checkImage" *ngIf="searchValue" src="../../../assets/images/outline-check.svg">
+  </div>

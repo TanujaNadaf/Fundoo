@@ -22,25 +22,19 @@ export class DisplayComponent implements OnInit {
   public reminderarray = [];
   public result=[];
   
-  date1:any;
-  time:any;
-  todaydate:any;
-
-date2:any;
-  cards=[];
-  show=""
-  @Output() messageEvent = new EventEmitter<any>()
+  
+  public time:string
+  public cards=[];
+  
+  @Output() Event = new EventEmitter<any>()
   private today = new Date();
-private tomorrow = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate() + 1)
+   private tomorrow = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate() + 1)
   
   constructor(public dialog: MatDialog, public data: DataService, private userService: UserServiceService,private snackBar: MatSnackBar) {
-    //console.log(this.allCards);
-    //console.log(this.text);
-   
+    
   }
   
   ngOnInit() {
-    //this.getAllReminders();
     
   }
 
@@ -52,12 +46,11 @@ private tomorrow = new Date(this.today.getFullYear(), this.today.getMonth(), thi
 
   }
   eventOccur() {
-    this.messageEvent.emit();
+    this.Event.emit();
   }
  
   removeReminder(id,reminder){
-    console.log("In remove reminder array");
-    console.log("Note id & Reminder is",id,reminder);
+    
     const remindermodel={
       noteIdList: [id]
       
@@ -68,7 +61,7 @@ private tomorrow = new Date(this.today.getFullYear(), this.today.getMonth(), thi
       duration: 3000,
     })
 
-    this.messageEvent.emit();
+    this.Event.emit();
   },error=>{
      console.log("Error in deleting reminder",error);
   })

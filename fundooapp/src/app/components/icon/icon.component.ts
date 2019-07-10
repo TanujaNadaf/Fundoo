@@ -2,22 +2,35 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserServiceService } from '../../services/userService/user-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CollaboratorComponent} from '../../components/collaborator/collaborator.component'
+
+
+export interface DialogData {
+  title: string;
+  description: string;
+  id: string;
+}
+
+
+
 @Component({
   selector: 'app-icon',
   templateUrl: './icon.component.html',
   styleUrls: ['./icon.component.scss']
 })
+
 export class IconComponent implements OnInit {
   @Input() cards;
   @Input() deletedCard;
-  show = true;
-  hide=false;
-  //array = [[], [], []];
-  colorArray = [[], [], []];
-  date: any;
-  date1: any;
-  date2: any;
-  date3:any;
+  public show = true;
+ public  hide=false;
+ 
+  public colorArray = [[], [], []];
+  public date: Date
+  public firstDate: Date
+  public secondDate: Date
+  public thirdDate:Date
   reminderBody = {
     'date': new FormControl(new Date()),
     'time': ''
@@ -28,13 +41,13 @@ export class IconComponent implements OnInit {
       [{ color: '#98FB98' }, { color: '#AFEEEE' }, { color: '#ADD8E6' }, { color: '#87CEFA' }],
       [{ color: '#DDA0DD' }, { color: '#FFC0CB' }, { color: '#DEB887' }, { color: '#DCDCDC' }]
     ]
-    console.log('colorArray  ', this.colorArray);
+    
 
   }
 
-  @Output() messageEvent = new EventEmitter<any>()
+  @Output() Event = new EventEmitter<any>()
 
-  constructor(private userService: UserServiceService, private snackBar: MatSnackBar) { }
+  constructor(private userService: UserServiceService, private snackBar: MatSnackBar,public dialog: MatDialog) { }
   myControl = new FormControl();
   options = [
     { name: 'Morning', time: '8:00 AM' },
@@ -52,7 +65,7 @@ export class IconComponent implements OnInit {
   ]
 
   deleteNote() {
-    console.log(this.cards);
+    
     const note = {
       'noteIdList': [this.cards['id']],
       'isDeleted': true
@@ -61,7 +74,7 @@ export class IconComponent implements OnInit {
     this.userService.delete(note).subscribe(data => {
 
       console.log("Response in Delete", data);
-      this.messageEvent.emit();
+      this.Event.emit();
       this.snackBar.open('Note Trashed', 'Undo', {
         duration: 3000,
       })
@@ -73,18 +86,17 @@ export class IconComponent implements OnInit {
 
   }
   deleteForever(){
-    console.log(this.deletedCard);
-    console.log("In delete forever notes function");
+    
     const note = {
       'noteIdList': [this.deletedCard['id']],
       'isDeleted': true
 
     }
-    console.log(note);
+   
     this.userService.deleteForeverNotes(note).subscribe(data => {
 
       console.log("Response to delete forever notes", data);
-      this.messageEvent.emit();
+      this.Event.emit();
       this.snackBar.open('Note Deleted Permanently', 'Undo', {
         duration: 3000,
       })
@@ -95,7 +107,7 @@ export class IconComponent implements OnInit {
 
   }
   archiveNote() {
-    console.log("In archive");
+   
     const note = {
       'noteIdList': [this.cards['id']],
       'isArchived': true,
@@ -103,7 +115,7 @@ export class IconComponent implements OnInit {
     this.userService.archive(note).subscribe(data => {
 
       console.log("Response in achive", data);
-      this.messageEvent.emit();
+      this.Event.emit();
       this.snackBar.open('Note Archived', 'Undo', {
         duration: 3000,
       })
@@ -114,37 +126,35 @@ export class IconComponent implements OnInit {
     )
   }
   changeColor(code, cards) {
-    console.log("In change color");
-    console.log(cards);
+   
     const note = {
       'noteIdList': [this.cards['id']],
       'color': code
     }
-    console.log(note);
+   
     this.userService.changeColor(note).subscribe(response => {
       console.log("Response to change color", response);
-      this.messageEvent.emit();
+      this.Event.emit();
     }, error => {
       console.log("Error in changing color", error);
     })
   }
   remindMeToday() {
-    console.log("In remind me today function");
+   
     let date = new Date();
     var time=date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-    console.log("time is",time);
-    console.log('Date is', date);
     
-    this.date1 = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 20, 0, 0, 0);
-    console.log("Date Example is", this.date1);
+    
+    this.firstDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 20, 0, 0, 0);
+    
 
     const object = {
       'noteIdList': [this.cards['id']],
-      'reminder': [this.date1]
+      'reminder': [this.firstDate]
     }
     this.userService.addReminder(object).subscribe(response => {
       console.log("Response to add reminder", response);
-      this.messageEvent.emit();
+      this.Event.emit();
     }, error => {
       console.log("Error in adding reminder", error);
     })
@@ -152,41 +162,39 @@ export class IconComponent implements OnInit {
   remindMeTomorrow() {
     console.log("In remind me tomorrow function");
     let date = new Date();
-    console.log('Date is', date);
-    this.date2 = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 8, 0, 0, 0)
-    console.log("Date Example is", this.date2);
+    
+    this.secondDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 8, 0, 0, 0)
+    
     const object = {
       'noteIdList': [this.cards['id']],
-      'reminder': [this.date2]
+      'reminder': [this.secondDate]
     }
     this.userService.addReminder(object).subscribe(response => {
       console.log("Response to add reminder", response);
-      this.messageEvent.emit();
+      this.Event.emit();
     }, error => {
       console.log("Error in adding reminder", error);
     })
   }
 remindNextWeek(){
-console.log("In remind next week function");
+
 let date = new Date();
-    console.log('Date is', date);
-    this.date3 = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 7, 8, 0, 0, 0)
-    console.log("Date Example is", this.date2);
+    
+    this.thirdDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 7, 8, 0, 0, 0)
+   
     const object = {
       'noteIdList': [this.cards['id']],
-      'reminder': [this.date3]
+      'reminder': [this.thirdDate]
     }
     this.userService.addReminder(object).subscribe(response => {
       console.log("Response to add reminder", response);
-      this.messageEvent.emit();
+      this.Event.emit();
     }, error => {
       console.log("Error in adding reminder", error);
     })
 }
 saveReminder(date,time){
-  console.log("In save reminder function");
-  console.log(date);
-  console.log(time);
+ ;
   if (time== '8:00 AM') {
     const body = {
       "noteIdList": [this.cards.id],
@@ -194,7 +202,7 @@ saveReminder(date,time){
 }
 this.userService.addReminder(body).subscribe(response => {
   console.log("Response to add reminder", response);
-  this.messageEvent.emit();
+  this.Event.emit();
 }, error => {
   console.log("Error in adding reminder", error);
 })
@@ -206,7 +214,7 @@ if (time== '1:00 PM') {
 }
 this.userService.addReminder(body).subscribe(response => {
 console.log("Response to add reminder", response);
-this.messageEvent.emit();
+this.Event.emit();
 }, error => {
 console.log("Error in adding reminder", error);
 })
@@ -218,7 +226,7 @@ if (time== '6:00 PM') {
 }
 this.userService.addReminder(body).subscribe(response => {
 console.log("Response to add reminder", response);
-this.messageEvent.emit();
+this.Event.emit();
 }, error => {
 console.log("Error in adding reminder", error);
 })
@@ -230,14 +238,14 @@ if (time== '8:00 PM') {
 }
 this.userService.addReminder(body).subscribe(response => {
 console.log("Response to add reminder", response);
-this.messageEvent.emit();
+this.Event.emit();
 }, error => {
 console.log("Error in adding reminder", error);
 })
 }
 else if (time == this.reminderBody.time) {
   var splitTime = this.reminderBody.time.split("", 8);
-  console.log(splitTime);
+
   var hour = Number(splitTime[0] + splitTime[1]);
   var minute = Number(splitTime[3] + splitTime[4]);
   var ampm = (splitTime[6] + splitTime[7]);
@@ -248,7 +256,7 @@ else if (time == this.reminderBody.time) {
 }
 this.userService.addReminder(body).subscribe(response => {
   console.log("Response to add reminder", response);
-  this.messageEvent.emit();
+  this.Event.emit();
   }, error => {
   console.log("Error in adding reminder", error);
   })
@@ -260,12 +268,18 @@ this.userService.addReminder(body).subscribe(response => {
 }
 this.userService.addReminder(body).subscribe(response => {
   console.log("Response to add reminder", response);
-  this.messageEvent.emit();
+  this.Event.emit();
   }, error => {
   console.log("Error in adding reminder", error);
   })
   }
 
 }
+}
+openCollaboratorDialog():void {
+    const dialogRefPic = this.dialog.open(CollaboratorComponent, {
+      width: '600px',
+      data: this.cards
+    });
 }
 }

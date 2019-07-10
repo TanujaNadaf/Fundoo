@@ -7,8 +7,8 @@ import { UserServiceService } from '../../services/userService/user-service.serv
 })
 export class RemindersComponent implements OnInit {
 
-result;
-reminderArray=[];
+public result=[];
+public reminderArray=[];
 @Output() messageEvent = new EventEmitter<any>()
 
   constructor(private userService: UserServiceService) { }
@@ -19,14 +19,14 @@ reminderArray=[];
  
 
   getAllReminders() {
-    console.log("In get all reminders function");
+    
     
     this.userService.getAllReminders().subscribe(response => {
 
       console.log("Response to get all reminders", response);
       
       this.result= response['data']['data']
-      console.log("Result is",this.result);
+     
       this.reminderArray = this.result;
       console.log("Reminder Array",this.reminderArray);
       

@@ -93,9 +93,9 @@
     </div>
   </mat-menu>
 </button>
-
-  <img src="../../../assets/images/personadd.svg" style="margin-top:15px;margin-left:10px;cursor:pointer">
-  <button mat-icon-button [matMenuTriggerFor]="abovemenu" style="margin-top:15px;margin-left:10px">
+   <button mat-icon-button style="margin-top:15px;cursor:pointer" (click)="openCollaboratorDialog()">
+  <img src="../../../assets/images/personadd.svg" style="cursor:pointer"></button>
+  <button mat-icon-button [matMenuTriggerFor]="abovemenu" style="margin-top:15px;">
     <img src="../../../assets/images/colorslens.svg">
     <mat-menu #abovemenu="matMenu" yPosition="above">
       <table>

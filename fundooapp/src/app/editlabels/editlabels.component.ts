@@ -12,11 +12,11 @@ import { DataService } from "../services/data.service";
 })
 export class EditlabelsComponent implements OnInit{
   
-  label=new FormControl();
+ public  label=new FormControl();
   public icon = 'add'; 
-labelId;
-show=true;
-labels=[];
+public labelId:string;
+public show=true;
+public labels=[];
 
 
   constructor(private userService:UserServiceService,public dialogRef: MatDialogRef<EditlabelsComponent>,public dialog: MatDialog,public data: DataService) { }
@@ -30,9 +30,7 @@ labels=[];
   
 createLabel(){
   console.log("In create label")
-  //const labelModel=new LabelModel();
-  //labelModel.label=this.label.value;
-  //console.log(labelModel);
+  
   const labelObject={
    'label': this.label.value,
    'isDeleted':false,
@@ -42,7 +40,7 @@ createLabel(){
 console.log(labelObject);
   this.userService.createLabel(labelObject).subscribe(response=>{
     console.log("Response to create label",response);
-     //this.messageEvent.emit(this.getAllLabels());
+     
      this.data.sendData(this.labels);
   },error=>{
     console.log("Error in creating labels",error);
@@ -78,8 +76,7 @@ onNoClick():
     this.dialogRef.close();
   }
 updateLabel(labelDetails){
-  console.log("In update label");
-  console.log(labelDetails);
+ 
   this.userService.updateLabel(labelDetails.id,labelDetails).subscribe(response => {
 
     console.log("Response to update label", response);
@@ -89,8 +86,7 @@ updateLabel(labelDetails){
   })
 }
 openDeleteLabel(label): void {
-  console.log("in open delete label dialog");
- // console.log(this.label);
+  
  
    this.dialog.open(DeletelabelComponent, {
      data: label,

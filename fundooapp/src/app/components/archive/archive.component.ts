@@ -6,14 +6,14 @@ import {UserServiceService} from '../../services/userService/user-service.servic
   styleUrls: ['./archive.component.scss']
 })
 export class ArchiveComponent implements OnInit {
-notes=[];
+public notes=[];
   constructor(private userService:UserServiceService) { }
 
   ngOnInit() {
   this.getArchivedNotes();
   }
  getArchivedNotes(){
-   console.log("In get all archived notes");
+   
    this.userService.getAllArchivedNotes().subscribe(response => {
     console.log("response in get all archived notes",response);
     this.notes= response['data']['data'];

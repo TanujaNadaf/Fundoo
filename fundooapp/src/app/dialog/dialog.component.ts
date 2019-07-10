@@ -13,15 +13,15 @@ import { DialogData } from '../components/display/display.component';
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent implements OnInit {
-  card: any;
+  public card:any;
 
   constructor(public dialogRef: MatDialogRef<DialogComponent>, public data: DataService,
      private userService: UserServiceService, @Inject(MAT_DIALOG_DATA) public note: DialogData) {
-    //console.log(note);
+    
     this.title.setValue(note.title);
     this.description.setValue(note.description);
     this.card = note;
-    console.log(this.card);
+   console.log(this.card);
 
   }
   title = new FormControl();
@@ -37,7 +37,7 @@ export class DialogComponent implements OnInit {
       'description': this.description.value,
       'noteId': this.card['id']
     }
-    console.log(card);
+   console.log(card);
     console.log(note);
     this.userService.update(note).subscribe(response => {
       console.log("Response to update", response);

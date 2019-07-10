@@ -19,7 +19,7 @@
         <div fxFlex='100' fxLayout="row" class="row">
             <div fxFlex="16" class="labelImage" >
                 <img src="../../assets/images/baseline-label.svg" *ngIf="labelId!=details.id">  
-                <img src="../../assets/images/baseline-delete.svg" *ngIf="labelId==details.id" (click)="openDeleteLabel(details)" (messaageEvent)="receiveMessage($event)" >
+                <img src="../../assets/images/baseline-delete.svg" *ngIf="labelId==details.id" (click)="openDeleteLabel(details)">
             </div>
             <div fxFlex="68"  >
                

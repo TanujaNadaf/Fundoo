@@ -41,6 +41,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
 import { CropimageComponent } from './components/cropimage/cropimage.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     SearchComponent,
     SearchPipe,
     CropimageComponent,
+    CollaboratorComponent,
     
   ],
   imports: [
@@ -80,6 +82,6 @@ import { ImageCropperModule } from 'ngx-image-cropper';
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
-  entryComponents:[DialogComponent,EditlabelsComponent,DeletelabelComponent, CropimageComponent ]
+  entryComponents:[DialogComponent,EditlabelsComponent,DeletelabelComponent, CropimageComponent,CollaboratorComponent ]
 })
 export class AppModule { }

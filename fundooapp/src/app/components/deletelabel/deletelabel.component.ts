@@ -15,12 +15,11 @@ export class DeletelabelComponent implements OnInit {
     
    }
   ngOnInit() {
-    console.log(this.data);
+   
   }
   
   deleteLabel(){
-    console.log("In delete labels function");
-    console.log('in delete labels function ',this.data);
+    
     this.userService.deleteLabel(this.data.id).subscribe(response => {
 
       console.log("Response to delete label", response);

@@ -24,19 +24,14 @@ export class RegisterComponent implements OnInit {
   register() {
     const registerModel = new Register();
     
-    console.log("in register");
-    console.log(this.emailFormControl.value);
-    console.log(this.firstnameFormControl.value);
-    console.log(this.lastnameFormControl.value);
-    console.log(this.passwordFormControl.value);
-    console.log(this.confirmFormControl.value);
+    
     registerModel.firstName = this.firstnameFormControl.value;
     registerModel.lastName = this.lastnameFormControl.value;
     registerModel.email = this.emailFormControl.value;
     registerModel.password = this.passwordFormControl.value;
     registerModel.confirmPassword = this.confirmFormControl.value;
    registerModel.service='Advance';
-    console.log(registerModel);
+   
     this.userService.register(registerModel).subscribe(data => {
 
       console.log("Registration Successfull", data);
