@@ -1,6 +1,6 @@
 <div fxLayout="row" class="row">
   <div>
-    <input matInput class="text" [formControl]="title">
+    <input matInput class="text" [(ngModel)]="title">
 
   </div>
 </div>
@@ -10,6 +10,6 @@
 </div>
 <div fxLayout="row">
   <app-icon></app-icon>
-  <button (click)="updateNotes(card)" (click)="onNoClick()" mat-button
+  <button (click)="updateNotes()" (click)="onNoClick()" mat-button
     style="margin-top:20px;margin-left:120px;font-family:Roboto,Arial,sans-serif;font-weight: bold">Close</button>
 </div>

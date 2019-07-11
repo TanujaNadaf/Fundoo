@@ -22,6 +22,17 @@
   <div fxLayout="row" fxLayoutGap="2%" class="collaborator">
     <button mat-icon-button class="matbutton">
     <img class="image" src="../../../assets/images/baseline-person_add-24px.svg"></button>
-    <input  [(ngModel)]="searchValue" (keyup)="searchUsers()" class="matinput" matInput placeholder="Person or email to share with">
+    <input [matMenuTriggerFor]="searchMenu" [(ngModel)]="searchValue" (keyup)="searchUsers()" class="matinput" matInput placeholder="Person or email to share with">
     <img class="checkImage" *ngIf="searchValue" src="../../../assets/images/outline-check.svg">
   </div>
+   <mat-menu #searchMenu="matMenu">
+     <div *ngFor="let index of searchArray">
+       <button  mat-button (click)="select(index.email)">{{index.firstName}} {{index.lastName}} {{index.email}}</button>
+     </div>
+   </mat-menu>
+   <div class="bottom">
+     <div fxLayout="row">
+       <button mat-button>Cancel</button>
+       <button mat-button>Save</button>
+     </div>
+   </div>

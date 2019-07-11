@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DataService } from "../services/data.service";
 import { UserServiceService } from '../services/userService/user-service.service';
 import { FormControl } from '@angular/forms';
-import { DialogData } from '../components/display/display.component';
+
 
 
 //import {UpdateNotes} from '../models/updateNotesModel';
@@ -13,18 +13,19 @@ import { DialogData } from '../components/display/display.component';
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent implements OnInit {
-  public card:any;
-
+  public card:Object;
+ public title:string;
   constructor(public dialogRef: MatDialogRef<DialogComponent>, public data: DataService,
-     private userService: UserServiceService, @Inject(MAT_DIALOG_DATA) public note: DialogData) {
+     private userService: UserServiceService, @Inject(MAT_DIALOG_DATA) public note) {
     
-    this.title.setValue(note.title);
+   this.title=note.title;
     this.description.setValue(note.description);
-    this.card = note;
-   console.log(this.card);
+    console.log("Note title is",note.title)
+   this.card = note;
+   console.log("In Constructor aaaaaaa",note);
 
   }
-  title = new FormControl();
+  
   description = new FormControl();
   ngOnInit() {
 
@@ -33,7 +34,7 @@ export class DialogComponent implements OnInit {
   updateNotes(card) {
     console.log("in update notes");
     const note = {
-      'title': this.title.value,
+      'title': this.title,
       'description': this.description.value,
       'noteId': this.card['id']
     }

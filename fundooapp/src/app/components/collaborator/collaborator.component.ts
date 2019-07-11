@@ -28,15 +28,19 @@ export class CollaboratorComponent implements OnInit {
   public img = environment.apiUrl + this.image2;
   
   searchUsers() {
-    this.userService.searchUser(
-      {
-        "searchWord": this.searchValue
-      }).subscribe(response => {
+    const word={
+      searchWord : this.searchValue
+    }
+    this.userService.searchUser(word).subscribe(response => {
         this.searchArray = response['data']['details'];
        console.log("Response to search users",response)
       }, error => {
         console.log("Error in searching users",error);
       })
+}
+select(email){
+  this.searchValue=email;
+  console.log(this.searchValue);
 }
  
 }
