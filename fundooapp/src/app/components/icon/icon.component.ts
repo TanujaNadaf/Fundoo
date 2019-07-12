@@ -6,11 +6,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CollaboratorComponent} from '../../components/collaborator/collaborator.component'
 
 
-export interface DialogData {
-  title: string;
-  description: string;
-  id: string;
-}
+
 
 
 
@@ -25,7 +21,7 @@ export class IconComponent implements OnInit {
   @Input() deletedCard;
   public show = true;
  public  hide=false;
- 
+ public peek:Boolean;
   public colorArray = [[], [], []];
   public date: Date
   public firstDate: Date

@@ -86,6 +86,12 @@ addImage(image){
 searchUser(word){
  return this.httpService.post('/user/searchUserList',word);
 }
+addCollaborator(noteId,collaboratorDetails){
+  return this.httpService.post('/notes/' + noteId + '/AddcollaboratorsNotes',collaboratorDetails);
+}
+removeCollaborator(noteId,collabId){
+  return this.httpService.delete('/notes/' + noteId + '/removeCollaboratorsNotes/'+ collabId);
+}
 }
 
 

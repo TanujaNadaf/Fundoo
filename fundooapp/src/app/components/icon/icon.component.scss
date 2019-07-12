@@ -269,3 +269,18 @@ width: 30px;
 .chooseperiod{
     margin-top:10px;
 }
+.labelHeading{
+    font-family:Arial;
+    padding:10px;
+}
+.input{
+    padding:10px;
+}
+.searchIcon{
+    margin-top:2px;
+    opacity: 0.5px;
+}
+::ng-deep .material-icons{
+    font-size:20px;
+    opacity:0.54;
+}

@@ -31,6 +31,13 @@ export class HttpServiceService {
     return this.http.get(this.dbUrl+url,httpOptions);
   }
   delete(url){
-    return this.http.delete(this.dbUrl+url);
+    const httpOptions = {
+      headers: new HttpHeaders(
+        {
+          Authorization: localStorage.getItem('token'),
+          'Content-Type' : 'application/json'
+        })
+    };
+    return this.http.delete(this.dbUrl+url,httpOptions);
   }
 }

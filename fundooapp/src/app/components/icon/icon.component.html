@@ -120,13 +120,9 @@
   <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-top:15px;margin-left:10px;cursor:pointer">
     <img src="../../../assets/images/outline-more_vert.svg">
     <mat-menu #menu="matMenu">
-
+       <div *ngIf="show==true">
       <button mat-menu-item (click)="deleteNote()">
         <span>Delete Note</span>
-      </button>
-
-      <button mat-menu-item>
-        <span>Add label</span>
       </button>
       <button mat-menu-item>
         <span>Add drawing</span>
@@ -137,10 +133,22 @@
       <button mat-menu-item (click)="deleteForever()">
         <span>Delete Forever</span>
       </button>
-
+      <button mat-menu-item (click)="show=false" (click)="$event.stopPropagation()">
+        <span>Add label</span>
+      </button>
+    </div>
+     <div *ngIf="show==false" (click)="$event.stopPropagation()">
+       <div class="labelHeading">Label note</div>
+       <div fxLayout="row">
+       <input class="input" matInput placeholder="Enter label name">
+       <mat-icon class="searchIcon">search</mat-icon>
+      </div>
+     </div>
+     
     </mat-menu>
-
+    
   </button>
+  
 </div>
 
 

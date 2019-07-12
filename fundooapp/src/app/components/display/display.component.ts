@@ -7,10 +7,11 @@ import { text } from '@angular/core/src/render3';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
-export interface DialogData {
-  //title: string;
-  //description: string;
+export interface DisplayData{
+  title:string;
+  description:string;
 }
+
 @Component({
   selector: 'app-display',
   templateUrl: './display.component.html',

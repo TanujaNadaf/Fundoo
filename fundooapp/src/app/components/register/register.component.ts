@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
     registerModel.lastName = this.lastnameFormControl.value;
     registerModel.email = this.emailFormControl.value;
     registerModel.password = this.passwordFormControl.value;
-    registerModel.confirmPassword = this.confirmFormControl.value;
+    //registerModel.confirmPassword = this.confirmFormControl.value;
    registerModel.service='Advance';
    
     this.userService.register(registerModel).subscribe(data => {

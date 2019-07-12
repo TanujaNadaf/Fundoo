@@ -5,34 +5,50 @@
   <mat-divider></mat-divider>
 </div>
 <div fxLayout="row">
-  <button class="minifabbutton" mat-mini-fab  *ngIf="image2!=''" [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover'}"></button>
+  <button class="minifabbutton" mat-mini-fab *ngIf="image2!=''"
+    [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover'}"></button>
   <div fxLayout="column">
     <div fxLayout="row" class="row" fxLayoutGap='3%'>
-  <div>{{firstName}}</div>
-  <div>{{lastName}}</div>
-  <div class="owner">(owner)</div>
-</div>
-  <div class="email">{{email}}</div>
-</div>
+      <div>{{firstName}}</div>
+      <div>{{lastName}}</div>
+      <div class="owner">(owner)</div>
+    </div>
+    <div class="email">{{email}}</div>
+  </div>
 
 </div>
+<div *ngFor="let collab of collaborator ">
+
+  <div fxLayout="row" class="collaboratorrow">
+    <div fxFlex='7' class="minifab">
+      <button mat-mini-fab color="primary">{{collab.firstName|slice:0:1}}</button></div>
+    <div fxFlex='86' class="collabemail">{{collab.email}}</div>
+    <div fxFlex='7' class="clearimage" (click)="removeCollaborator(collab)">
+      <img src="../../../assets/images/outlineClear.svg"></div>
+  </div>
+</div>
+
 <div class="divider">
-    <mat-divider></mat-divider>
-  </div>
-  <div fxLayout="row" fxLayoutGap="2%" class="collaborator">
-    <button mat-icon-button class="matbutton">
+  <mat-divider></mat-divider>
+</div>
+<div fxLayout="row" fxLayoutGap="2%" class="collaborator">
+  <button mat-icon-button class="matbutton">
     <img class="image" src="../../../assets/images/baseline-person_add-24px.svg"></button>
-    <input [matMenuTriggerFor]="searchMenu" [(ngModel)]="searchValue" (keyup)="searchUsers()" class="matinput" matInput placeholder="Person or email to share with">
-    <img class="checkImage" *ngIf="searchValue" src="../../../assets/images/outline-check.svg">
+  <input [matMenuTriggerFor]="searchMenu" [(ngModel)]="searchValue" (keyup)="searchUsers()" class="matinput" matInput
+    placeholder="Person or email to share with">
+  <img class="checkImage" *ngIf="searchValue" src="../../../assets/images/outline-check.svg"
+    (click)="addCollab(searchValue)">
+</div>
+<mat-menu #searchMenu="matMenu">
+  <div *ngFor="let index of searchArray">
+    <button mat-button (click)="addCollaborator(index)" (click)="select(index.email)">{{index.firstName}}
+      {{index.lastName}} {{index.email}}</button>
   </div>
-   <mat-menu #searchMenu="matMenu">
-     <div *ngFor="let index of searchArray">
-       <button  mat-button (click)="select(index.email)">{{index.firstName}} {{index.lastName}} {{index.email}}</button>
-     </div>
-   </mat-menu>
-   <div class="bottom">
-     <div fxLayout="row">
-       <button mat-button>Cancel</button>
-       <button mat-button>Save</button>
-     </div>
-   </div>
+</mat-menu>
+<div class="bottom">
+  <div fxLayout="row">
+    <button (click)="onCancel()" mat-button>Cancel</button>
+
+    <button (click)="saveCollaborator(searchValue)" mat-button>Save</button>
+  </div>
+</div>

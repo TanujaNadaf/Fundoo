@@ -8,6 +8,16 @@
         <div class="description" fxLayout="row" (click)="openDialog(data)">
           {{data.description}}
         </div>
+        <div fxLayout="row" fxLayoutGap="2%" class="rowButtons">
+          <div *ngFor="let collab of data.collaborators ">
+          <div fxFlex='7'>
+          <button  mat-mini-fab color="primary" >{{collab.firstName|slice:0:1}}</button></div>
+          
+          
+        </div>
+        </div>
+        
+        
         <div *ngIf="remiderCutOff(data.reminder[0])">
           <div *ngIf="data.reminder.length!=0">
             <div *ngFor="let remin  of data.reminder">

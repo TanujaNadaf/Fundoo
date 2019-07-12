@@ -26,6 +26,7 @@ export class NotesComponent implements OnInit {
       console.log("Response to get all notes", data['data']['data']);
       this.cards= data['data']['data'];
       console.log(this.cards);
+  
     }, error => {
       console.log("Error in getting all Notes", error);
     })
