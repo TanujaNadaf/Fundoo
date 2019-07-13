@@ -92,6 +92,15 @@ addCollaborator(noteId,collaboratorDetails){
 removeCollaborator(noteId,collabId){
   return this.httpService.delete('/notes/' + noteId + '/removeCollaboratorsNotes/'+ collabId);
 }
+addLabelsToNotes(noteId,labelId,label){
+  return this.httpService.post('/notes/' + noteId + '/addLabelToNotes/' + labelId +'/add',label);
+}
+getNotesByLabelName(labelName){
+  return this.httpService.post('/notes/getNotesListByLabel/'+labelName,{});
+}
+removeNoteLabel(noteId,labelId,label){
+  return this.httpService.post("/notes/" + noteId + "/addLabelToNotes/" + labelId + "/remove", label);
+}
 }
 
 

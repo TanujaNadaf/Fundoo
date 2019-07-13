@@ -2,7 +2,7 @@ import { Component, OnInit,} from '@angular/core';
 import {UserServiceService} from '../../services/userService/user-service.service';
 import { Variable } from '@angular/compiler/src/render3/r3_ast';
 import { DataService } from "../../services/data.service";
-
+import { Params, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
@@ -10,13 +10,18 @@ import { DataService } from "../../services/data.service";
 })
 export class NotesComponent implements OnInit {
   cards;
-  
-  constructor(private userService:UserServiceService, public data: DataService) { }
+  public label:Object
+  public labelName:string;
+ 
+  constructor(private userService:UserServiceService, public data: DataService,  private router: ActivatedRoute,) { }
 
   ngOnInit() {
-    this.data.currentData.subscribe(card => {
+    this.data.currentData.subscribe(result => {
+     
       this.allNotes();
-
+     
+      
+      
     });
     this.allNotes();
   }
@@ -36,4 +41,5 @@ export class NotesComponent implements OnInit {
     this.allNotes();
     
   }
+  
 }

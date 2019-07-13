@@ -78,5 +78,18 @@ remiderCutOff(cuttOff) {
     return false;
   }
 } 
+removeLabelNote(noteId,labelId,label){
+  this.userService.removeNoteLabel(noteId,labelId,label).subscribe(response=>{
+    console.log("Response to deleting notes label",response);
+    this.snackBar.open('Reminder Deleted', 'Undo', {
+      duration: 3000,
+    })
+
+    this.Event.emit();
+  },error=>{
+     console.log("Error in deleting notes label",error);
+  })
 }
+}
+
 

@@ -19,6 +19,7 @@ import { CollaboratorComponent} from '../../components/collaborator/collaborator
 export class IconComponent implements OnInit {
   @Input() cards;
   @Input() deletedCard;
+  
   public show = true;
  public  hide=false;
  public peek:Boolean;
@@ -27,6 +28,7 @@ export class IconComponent implements OnInit {
   public firstDate: Date
   public secondDate: Date
   public thirdDate:Date
+  public allLabels=[];
   reminderBody = {
     'date': new FormControl(new Date()),
     'time': ''
@@ -37,7 +39,7 @@ export class IconComponent implements OnInit {
       [{ color: '#98FB98' }, { color: '#AFEEEE' }, { color: '#ADD8E6' }, { color: '#87CEFA' }],
       [{ color: '#DDA0DD' }, { color: '#FFC0CB' }, { color: '#DEB887' }, { color: '#DCDCDC' }]
     ]
-    
+    this.getAllLabels();
 
   }
 
@@ -278,4 +280,29 @@ openCollaboratorDialog():void {
       data: this.cards
     });
 }
+getAllLabels() {
+  this.userService.getAllLabels().subscribe(response => {
+    console.log('Response to get all labels', response);
+
+
+    this.allLabels = response['data']['details'];
+
+  }, error => {
+    console.log("Error in Displaying Notes", error);
+  })
+}
+addLabel(labelDetails,label){
+ 
+  
+  this.userService.addLabelsToNotes(this.cards.id,labelDetails.id,label).subscribe(response=>{
+    console.log('Response to adding labels to notes', response);
+     this.Event.emit();
+
+    
+
+  }, error => {
+    console.log("Error in adding labels to notes", error);
+  })
+}
+
 }

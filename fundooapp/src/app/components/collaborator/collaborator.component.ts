@@ -118,15 +118,7 @@ removeCollaborator(collaborator){
 
 }
 saveCollaborator(userEmail){
-  for (let k = 0; k < this.collaborator.length; k++) {
-    if (this.searchValue == this.collaborator[k].email) {
-      this.snackBar.open('Collaborator already exists','Undo' , {
-        duration: 2000
-      })
-      this.searchValue = null;
-      return false;
-    }
-  }
+  
   for (let i = 0; i < this.searchArray.length; i++) {
     if (this.searchArray[i].email == userEmail) {
       this.collaborator.push(this.searchArray[i]);

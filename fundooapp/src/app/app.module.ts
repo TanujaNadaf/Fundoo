@@ -42,7 +42,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import { CropimageComponent } from './components/cropimage/cropimage.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { SearchlabelPipe } from './components/pipe/searchlabel.pipe'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +65,7 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
     SearchPipe,
     CropimageComponent,
     CollaboratorComponent,
+    SearchlabelPipe,
     
   ],
   imports: [
@@ -78,7 +80,7 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
     FormsModule, ReactiveFormsModule,
     HttpClientModule,MatDividerModule,MatGridListModule,MatToolbarModule,MatSidenavModule,
     MatListModule,MatButtonToggleModule,MatIconModule,MatMenuModule,MatExpansionModule,MatSnackBarModule,MatDialogModule,MatDatepickerModule,MatNativeDateModule,MatAutocompleteModule,MatSelectModule,MatChipsModule,ImageCropperModule,
-    
+    MatCheckboxModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],

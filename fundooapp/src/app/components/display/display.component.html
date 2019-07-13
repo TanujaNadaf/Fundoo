@@ -8,7 +8,18 @@
         <div class="description" fxLayout="row" (click)="openDialog(data)">
           {{data.description}}
         </div>
+        
         <div fxLayout="row" fxLayoutGap="2%" class="rowButtons">
+          <div class="matchip" *ngFor="let index of data.noteLabels">
+              <mat-chip-list  >
+                  <mat-chip style="font-size:11px;font-family: arial;letter-spacing:0in;"> 
+                    <div fxLayout="row">
+                    <div style="margin-top:3px">{{index.label}}</div>
+                    <mat-icon matChipRemove (click)="removeLabelNote(data.id,index.id,index.label)">cancel</mat-icon>
+                  </div>
+                </mat-chip>
+              </mat-chip-list>
+          </div>
           <div *ngFor="let collab of data.collaborators ">
           <div fxFlex='7'>
           <button  mat-mini-fab color="primary" >{{collab.firstName|slice:0:1}}</button></div>
@@ -56,7 +67,7 @@
 
 
        
-        <app-icon [cards]="data" (Event)="eventOccur()"></app-icon>
+        <app-icon [cards]="data"  (Event)="eventOccur()"></app-icon>
 
       </mat-card>
     </div>
