@@ -9,6 +9,7 @@ import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { SearchComponent } from './search/search.component';
+import { QuestionanswerComponent } from './components/questionanswer/questionanswer.component';
 
 const routes: Routes = [
   {  path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -24,7 +25,8 @@ const routes: Routes = [
         path: '', redirectTo: 'notes', pathMatch: 'full' 
       },
       {
-        path: 'notes', component: NotesComponent
+        path: 'notes', component: NotesComponent,
+        
       },
       {
         path:'reminders',component:RemindersComponent
@@ -35,7 +37,9 @@ const routes: Routes = [
       {
         path:'trash',component:TrashComponent
       },
-      
+      {
+        path:'QuestionAnswer/:cardId',component:QuestionanswerComponent
+      }
     ]
   
   },

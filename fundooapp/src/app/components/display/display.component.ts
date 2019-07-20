@@ -6,6 +6,7 @@ import { UserServiceService } from '../../services/userService/user-service.serv
 import { text } from '@angular/core/src/render3';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { UpdatenoteslabelComponent } from '../updatenoteslabel/updatenoteslabel.component';
 
 export interface DisplayData{
   title:string;
@@ -22,8 +23,8 @@ export class DisplayComponent implements OnInit {
   @Input() text;
   public reminderarray = [];
   public result=[];
-  
-  
+  public questionasked:number=0;
+  public show:Boolean=false;
   public time:string
   public cards=[];
   
@@ -89,6 +90,16 @@ removeLabelNote(noteId,labelId,label){
   },error=>{
      console.log("Error in deleting notes label",error);
   })
+}
+openUpdateNotesLabel(labelDetails){
+  console.log("In update notes label")
+  this.dialog.open(UpdatenoteslabelComponent,{
+   width:'600px',
+   data:labelDetails
+  })
+}
+showQuestion(){
+  this.questionasked=1;
 }
 }
 

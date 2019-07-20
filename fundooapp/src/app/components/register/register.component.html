@@ -2,14 +2,14 @@
   <mat-card fxFlex='30' fxFlex.xs='100'>
     <h1>Create your Fundoo Account</h1>
     <h2>to continue to Fundoo</h2>
-    <form autocomplete="off">
+    <form autocomplete="off"  >
 
 
       <div fxLayout="row" fxLayout.xs='column' fxLayoutGap='1%'>
         <div fxFlex="50">
           <mat-form-field fxFlex='100' [style.font-size.px]='12' appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="First Name" [formControl]="firstnameFormControl">
+            <input name="email" matInput placeholder="First Name" [formControl]="firstnameFormControl">
             <mat-error *ngIf="firstnameFormControl.invalid && firstnameFormControl.hasError('required')">First Name is
               required!</mat-error>
           </mat-form-field>
@@ -32,7 +32,7 @@
         <div fxFlex="100">
           <mat-form-field fxFlex="100" [style.font-size.px]='12' appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Email" [formControl]="emailFormControl">
+            <input matInput placeholder="Email" [formControl]="emailFormControl" >
             <mat-error *ngIf="emailFormControl.invalid && emailFormControl.hasError('required')">Email is required!
             </mat-error>
             <mat-error *ngIf="emailFormControl.invalid && emailFormControl.hasError('email')">Email is Invalid!Please

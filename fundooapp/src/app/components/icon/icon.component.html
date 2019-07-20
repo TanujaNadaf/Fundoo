@@ -1,6 +1,7 @@
-<div style="display:flex">
-  <button mat-icon-button [matMenuTriggerFor]="remindermenu" style="margin-top:15px;cursor:pointer">
-  <img src="../../../assets/images/reminder.svg">
+
+<div style="display:flex"  >
+  <button mat-icon-button [matMenuTriggerFor]="remindermenu" class="reminder" style="margin-top:15px;cursor:pointer">
+  <img class="reminder" src="../../../assets/images/reminder.svg">
   
   <mat-menu #remindermenu="matMenu">
       
@@ -93,9 +94,9 @@
     </div>
   </mat-menu>
 </button>
-   <button mat-icon-button style="margin-top:15px;cursor:pointer" (click)="openCollaboratorDialog()">
+   <button mat-icon-button style="margin-top:15px;cursor:pointer;margin-left:10px" (click)="openCollaboratorDialog()">
   <img src="../../../assets/images/personadd.svg" style="cursor:pointer"></button>
-  <button mat-icon-button [matMenuTriggerFor]="abovemenu" style="margin-top:15px;">
+  <button mat-icon-button [matMenuTriggerFor]="abovemenu" style="margin-top:15px;margin-left:10px">
     <img src="../../../assets/images/colorslens.svg">
     <mat-menu #abovemenu="matMenu" yPosition="above">
       <table>
@@ -113,11 +114,11 @@
      
     </mat-menu>
   </button>
-  <img src="../../../assets/images/addimage.svg" style="margin-top:15px;margin-left:10px;cursor:pointer">
+  <img src="../../../assets/images/addimage.svg" style="margin-top:15px;margin-left:15px;cursor:pointer">
 
-  <img src="../../../assets/images/archive.svg" style="margin-top:15px;margin-left:10px;cursor:pointer" (click)="archiveNote()">
+  <img src="../../../assets/images/archive.svg" style="margin-top:15px;margin-left:20px;cursor:pointer" (click)="archiveNote()">
 
-  <button mat-icon-button [matMenuTriggerFor]="menu" (click)="show=true" style="margin-top:15px;margin-left:10px;cursor:pointer">
+  <button mat-icon-button [matMenuTriggerFor]="menu" (click)="show=true" style="margin-top:15px;margin-left:15px;cursor:pointer">
     <img src="../../../assets/images/outline-more_vert.svg">
     <mat-menu #menu="matMenu">
        <div *ngIf="show==true">
@@ -127,8 +128,8 @@
       <button mat-menu-item>
         <span>Add drawing</span>
       </button>
-      <button mat-menu-item>
-        <span>Make a copy</span>
+      <button mat-menu-item (click)="routeToQA()">
+        <span>Ask a Question</span>
       </button>
       <button mat-menu-item (click)="deleteForever()">
         <span>Delete Forever</span>
@@ -145,7 +146,7 @@
        
        <div *ngFor="let details of allLabels|searchlabel:label" class="alllabels">
         <button mat-menu-item >
-        <mat-checkbox (click)="addLabel(details,label)">{{details.label}}</mat-checkbox>
+        <mat-checkbox (click)="addLabel(details,label)" (click)="$event.stopPropagation()">{{details.label}}</mat-checkbox>
         
         </button>
        </div>

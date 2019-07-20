@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CollaboratorComponent} from '../../components/collaborator/collaborator.component'
-
+import { Router } from '@angular/router';
 
 
 
@@ -45,7 +45,7 @@ export class IconComponent implements OnInit {
 
   @Output() Event = new EventEmitter<any>()
 
-  constructor(private userService: UserServiceService, private snackBar: MatSnackBar,public dialog: MatDialog) { }
+  constructor(private userService: UserServiceService, private snackBar: MatSnackBar,public dialog: MatDialog,private router:Router) { }
   myControl = new FormControl();
   options = [
     { name: 'Morning', time: '8:00 AM' },
@@ -304,5 +304,7 @@ addLabel(labelDetails,label){
     console.log("Error in adding labels to notes", error);
   })
 }
-
+routeToQA(){
+this.router.navigate(['dashboard/QuestionAnswer/'+ this.cards.id])
+}
 }

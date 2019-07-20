@@ -1,7 +1,7 @@
-<div class="center" fxLayoutGap="4px" fxLayoutAlign="center center">
+<div class="center" fxLayoutGap="10px" fxLayoutAlign="center center">
   <div *ngFor="let data of allCards | filter:text">
     <div *ngIf="!data.isDeleted && !data.isArchived">
-      <mat-card [ngStyle]="{'background-color':data.color}" style="margin-top:50px;">
+      <mat-card [ngStyle]="{'background-color':data.color}">
         <div fxLayout="row" (click)="openDialog(data)"  >
           {{data.title}}
         </div>
@@ -9,24 +9,25 @@
           {{data.description}}
         </div>
         
-        <div fxLayout="row" fxLayoutGap="2%" class="rowButtons">
+        <div fxLayout="row" fxLayoutGap="2%"  class="rowButtons">
           <div class="matchip" *ngFor="let index of data.noteLabels">
-              <mat-chip-list  >
-                  <mat-chip style="font-size:11px;font-family: arial;letter-spacing:0in;"> 
+              <mat-chip-list >
+                  <mat-chip (click)="openUpdateNotesLabel(index)"style="font-size:11px;font-family: arial;letter-spacing:0in;height:5px"> 
                     <div fxLayout="row">
                     <div style="margin-top:3px">{{index.label}}</div>
                     <mat-icon matChipRemove (click)="removeLabelNote(data.id,index.id,index.label)">cancel</mat-icon>
                   </div>
                 </mat-chip>
               </mat-chip-list>
+              
           </div>
-          <div *ngFor="let collab of data.collaborators ">
-          <div fxFlex='7'>
-          <button  mat-mini-fab color="primary" >{{collab.firstName|slice:0:1}}</button></div>
-          
-          
+         
         </div>
-        </div>
+        <div fxLayout="row" fxLayoutGap="2%" fxLayoutAlign="row wrap" style="margin-top:10px">
+        <div *ngFor="let collab of data.collaborators ">
+       
+        <button  mat-mini-fab color="primary" >{{collab.firstName|slice:0:1}}</button>
+        </div></div>
         
         
         <div *ngIf="remiderCutOff(data.reminder[0])">
@@ -60,15 +61,14 @@
             </div>
           </div>
         </div>
-        
-
-
-
-
-
-       
-        <app-icon [cards]="data"  (Event)="eventOccur()"></app-icon>
-
+        <app-icon [cards]="data" class="showOn" (Event)="eventOccur()"></app-icon>
+        <div *ngIf="data.questionAndAnswerNotes.length!=0">
+        <mat-divider></mat-divider>
+        <div class="questionasked">
+          <div >Question Asked</div>
+          <div  [innerHtml]='data.questionAndAnswerNotes[0].message'></div>
+        </div>
+        </div>
       </mat-card>
     </div>
   </div>

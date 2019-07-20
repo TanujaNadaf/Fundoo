@@ -1,0 +1,57 @@
+<div class="main" fxFlex='200' fxLayout="row" fxLayoutAlign="center center">
+<mat-card fxFlex='60' >
+  <div fxLayout="row" fxLayoutGap="82%">
+  <div class="title">{{noteDetails.title}}</div>
+  <button  mat-button routerLink="/dashboard/notes">Close</button>
+</div>
+  <mat-divider></mat-divider>
+<div *ngIf="messageArray.length==0" class="question">Ask a Question
+<div class="statement">Make sure what you are asking is unique,concise, and phrased like a question.</div>
+<div class="editor" [froalaEditor] [(froalaModel)]="editorContent"></div>
+<div class="questionbutton" (click)="addQuestionandAnswer()" >
+  <button mat-button>Ask Question</button>
+</div></div>
+<div *ngIf="messageArray.length!=0" class="questionasked">Question Asked
+<div class="questiondata"[innerHTML]="userDetails.message"></div>
+<mat-divider class="matdivider"></mat-divider>
+<div fxLayout="row" fxLayoutGap="2%">
+  <button class="minifabbutton" mat-mini-fab *ngIf="image2!=''"
+    [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover'}"></button>
+  <div fxLayout="column">
+    <div fxLayout="row" class="row" fxLayoutGap='2%'>
+      <div class="firstName">{{userDetails.user.firstName}}</div>
+      <div class="lastName">{{userDetails.user.lastName}}</div>
+       </div>
+    <div class="date">{{today|date:'mediumDate'}},{{today|date:'shortTime'}}</div>
+    <div class="questiondata1" [innerHTML]="userDetails.message"></div>
+  </div>
+  <div fxLayout="row" class="icon"> 
+    <div class="replyimage">
+    <img  src='../../../assets/images/baseline-reply-24px.svg'(click)="hide=false"></div>
+    <div class="thumbsup" *ngIf="isLiked(userDetails)">
+    <img  *ngIf="liked==0" src='../../../assets/images/baseline-thumb_up_alt-24px.svg' (click)="likedQuestion(userDetails.id,true)">
+    <img  *ngIf="liked==1" src='../../../assets/images/baseline-thumb_up_alt-24px.svg' (click)="likedQuestion(userDetails.id,false)">
+    </div>
+    <div class="likeddetails" >{{liked}} likes</div>
+    <div>
+    <div class="barrating">
+     <bar-rating *ngIf="userDetails.rate.length!=0" [(rate)]="userDetails.rate[0].rate" (rateChange)="ratedQuestion(userDetails.id,$event)" [max]="5"></bar-rating>
+     <bar-rating *ngIf="userDetails.rate.length==0" (rateChange)="ratedQuestion(userDetails.id,$event)" [max]="5"></bar-rating></div>
+    </div>
+  <div class="ratenumber">{{userDetails.rate[0].rate}}</div>
+  </div>
+</div>
+<div *ngIf="hide==false">
+  <div class="editor" [froalaEditor] [(froalaModel)]="replycontent"></div>
+  <button class="replybutton" mat-button>Reply</button></div>
+</div>
+</mat-card>
+</div>
+<!-- <div fxLayout="row"> 
+  <img class="reply" src='../../../assets/images/baseline-reply-24px.svg'(click)="hide=false">
+  <div *ngIf="isLiked(userDetails)">
+  <img class="thumbsup" *ngIf="liked==0" src='../../../assets/images/baseline-thumb_up_alt-24px.svg' (click)="likedQuestion(userDetails.id,true)">
+  <img class="thumbsup" *ngIf="liked==1" src='../../../assets/images/baseline-thumb_up_alt-24px.svg' (click)="likedQuestion(userDetails.id,false)">
+  <div class="likenumber">{{liked}} likes</div>
+  </div>
+</div>-->

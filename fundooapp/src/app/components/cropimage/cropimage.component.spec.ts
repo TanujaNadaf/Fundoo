@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ImageCropperModule } from 'ngx-image-cropper';
 import { CropimageComponent } from './cropimage.component';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 describe('CropimageComponent', () => {
   let component: CropimageComponent;
@@ -8,7 +12,17 @@ describe('CropimageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CropimageComponent ]
+      imports:[ImageCropperModule,MatDialogModule,HttpClientModule],
+      declarations: [ CropimageComponent ],
+      providers:[
+        {
+         provide: MatDialogRef,
+         
+
+        },
+        { provide: MAT_DIALOG_DATA, useValue:{} },
+       
+        ]
     })
     .compileComponents();
   }));

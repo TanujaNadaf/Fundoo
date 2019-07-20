@@ -101,6 +101,21 @@ getNotesByLabelName(labelName){
 removeNoteLabel(noteId,labelId,label){
   return this.httpService.post("/notes/" + noteId + "/addLabelToNotes/" + labelId + "/remove", label);
 }
+updateLabelofNotes(id,labelDetails){
+  return this.httpService.post('/noteLabels/' + id + '/updateNoteLabel', labelDetails);
+}
+getNotesDetail(noteId){
+  return this.httpService.get('/notes/getNotesDetail/'+noteId)
+}
+addQuestionandAnswer(questionData){
+  return this.httpService.post('/questionAndAnswerNotes/addQuestionAndAnswer',questionData)
+}
+likedQuestion(id,data){
+  return this.httpService.post('/questionAndAnswerNotes/like/'+id,data)
+}
+ratedQuestion(id,rate){
+  return this.httpService.post('/questionAndAnswerNotes/rate/'+id,rate)
+}
 }
 
 
