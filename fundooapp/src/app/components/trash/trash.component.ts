@@ -17,7 +17,7 @@ export class TrashComponent implements OnInit {
     this.userService.getAllDeletedNotes().subscribe(data => {
       console.log("Response to getting all trash notes", data['data']['data']);
       this.cards= data['data']['data'];
-      console.log(this.cards);
+      console.log("trashed",this.cards);
     }, error => {
       console.log("Error in getting all trashed Notes", error);
     })

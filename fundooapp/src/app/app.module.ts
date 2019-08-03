@@ -49,6 +49,11 @@ import { UpdatenoteslabelComponent } from './components/updatenoteslabel/updaten
 import { QuestionanswerComponent } from './components/questionanswer/questionanswer.component'
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { BarRatingModule } from "ngx-bar-rating";
+import { ServiceComponent } from './components/service/service.component';
+import { PackdialogComponent } from './components/packdialog/packdialog.component';
+import {MatSliderModule} from '@angular/material/slider'
+import {MatTabsModule} from '@angular/material/tabs';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 @NgModule({
@@ -75,6 +80,11 @@ import { BarRatingModule } from "ngx-bar-rating";
     SearchlabelPipe,
     UpdatenoteslabelComponent,
     QuestionanswerComponent,
+    ServiceComponent,
+    PackdialogComponent,
+    PaymentComponent,
+    
+    
     
   ],
   imports: [
@@ -96,10 +106,10 @@ import { BarRatingModule } from "ngx-bar-rating";
     MatListModule,
     MatButtonToggleModule,
     MatIconModule, MatMenuModule, MatExpansionModule, MatSnackBarModule, MatDialogModule, MatDatepickerModule, MatNativeDateModule, MatAutocompleteModule, MatSelectModule, MatChipsModule, ImageCropperModule,
-    MatCheckboxModule, CommonModule,FroalaEditorModule.forRoot(),FroalaViewModule.forRoot(),BarRatingModule
+    MatCheckboxModule, CommonModule,FroalaEditorModule.forRoot(),FroalaViewModule.forRoot(),BarRatingModule,MatTabsModule,MatSliderModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent, EditlabelsComponent, DeletelabelComponent, CropimageComponent, CollaboratorComponent, UpdatenoteslabelComponent]
+  entryComponents: [DialogComponent, EditlabelsComponent, DeletelabelComponent, CropimageComponent, CollaboratorComponent, UpdatenoteslabelComponent,PackdialogComponent]
 })
 export class AppModule { }

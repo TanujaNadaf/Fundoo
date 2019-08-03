@@ -1,5 +1,5 @@
 <div class="main" fxFlex='100' fxFlex="row" fxLayoutAlign="center center">
-  <mat-card fxFlex='30' fxFlex.xs='100'>
+  <mat-card fxFlex='29' fxFlex.xs='100'>
     <h1>Create your Fundoo Account</h1>
     <h2>to continue to Fundoo</h2>
     <form autocomplete="off"  >
@@ -69,10 +69,26 @@
 
       <p> Use 8 or more characters with a mix of letters,symbols and numbers</p>
 
-      <div fxFlexLayout="row" fxLayoutGap="47%">
-        <a mat-button color="primary" (click)="signIn()" style="font-weight:bold;font-family:Times-New -Roman">Sign in
+      <div  fxLayout="row">
+          <div *ngFor="let service of serviceCards" class="allCards">
+          <mat-card class="matcard1" fxFlex='90' [class.matcardc]="getColor(service.name)" >
+            <div class="heading1">$ 6.99 per </div>
+            <div class="heading2">Month</div>
+            <a class="advance">{{service.name}}</a>
+            <li class="first">Unlimited wall space</li>
+            <li class="second">Nice Interface</li>
+            <li class="third">$6.99 per/month</li>
+            <li class="fourth">Ability to add only title and description</li>
+            </mat-card>
+            
+          </div>
+          
+        </div>
+
+      <div fxFlexLayout="row" fxLayoutGap="46%">
+        <a mat-button class="button1" color="primary" (click)="signIn()" style="font-weight:bold;font-family:Times-New -Roman">Sign in
           instead</a>
-        <button fxFlex="23" mat-raised-button color="primary" style="font-family:Times-New-Roman"
+        <button fxFlex="23" class="button2" mat-raised-button color="primary" style="font-family:Times-New-Roman;"
           (click)="register()">Register</button>
       </div>
 

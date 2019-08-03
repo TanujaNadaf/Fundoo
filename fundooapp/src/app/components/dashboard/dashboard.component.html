@@ -11,9 +11,10 @@
       </div>
     </mat-form-field>
     <mat-icon class="refresh">refresh</mat-icon>
-    <img class="grid" src="../../../assets/images/ListView.svg">
+    <img class="grid" src="../../../assets/images/ListView.svg" (click)="gridView()" *ngIf="list==0">
+    <mat-icon class="apps" (click)="listView()" *ngIf="list==1">apps</mat-icon>
     <img class="settings" fxHide.xs src="../../../assets/images/settings.svg">
-    <mat-icon class="apps">apps</mat-icon>
+    <img class="cart" fxHide.xs src="../../../assets/images/outline-local_grocery_store-24px.svg" (click)="routeToPayment()">
     <div *ngIf="image2!=''">
       <button mat-mini-fab [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover'}"
         [matMenuTriggerFor]="menu" class="profilepic">

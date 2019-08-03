@@ -24,7 +24,8 @@ public userDetails:Object;
 public count:number;
 public liked:number;
 public lykC:number;
-
+public replied:number=0;
+public parentId:string;
   constructor(private router:Router,private userService:UserServiceService) { }
   
   ngOnInit() {
@@ -42,10 +43,11 @@ getNotesDetail(noteId){
   this.userService.getNotesDetail(noteId).subscribe(response=>{
     console.log("Response to get notes detail",response);
     this.noteDetails=response['data']['data'][0];
-    console.log(this.noteDetails);
+    //console.log(this.noteDetails);
     this.messageArray=this.noteDetails['questionAndAnswerNotes'];
-    console.log("Message array is",this.messageArray)
+    //console.log("Message array is",this.messageArray)
     this.userDetails=this.messageArray[0];
+    this.parentId=this.messageArray[0].id;
   },error=>{
     console.log("Error in getting notes detail",error);
   })
@@ -101,5 +103,22 @@ this.userService.ratedQuestion(id,data).subscribe(response=>{
 })
 
 }
-
+questionAnswerReply(id,replycontent2){
+  console.log("Reply content is",replycontent2);
+  const replyData={
+    message:replycontent2,
+    
+  }
+  this.userService.questionAnswerReply(id,replyData).subscribe(response=>{
+    console.log("Response to reply question",response)
+    this.replied=0;
+    this.getNotesDetail(this.Details[3])
+  },error=>{
+    console.log("Error to reply question",error)
+  })
+}
+repliedFunc(){
+  
+  this.replied=1;
+}
 }

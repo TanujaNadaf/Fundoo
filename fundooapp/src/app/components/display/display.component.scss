@@ -2,10 +2,7 @@
     margin-bottom: 10px;
     
 }
-.center{
-    margin-top: 50px;
-    
-}
+
 .description{
     margin-top: 10px;
 }
@@ -48,4 +45,19 @@
     font-size:14px;
     font-family: arial;
     margin-top:10px;
+}
+.grid{
+      .mat-card{
+         margin-top:50px;
+         width:270px;
+         margin-left:10px;
+      }
+}
+ .list{
+     .mat-card{
+      width:700px;
+      margin-top:20px;
+      
+     }
+
 }

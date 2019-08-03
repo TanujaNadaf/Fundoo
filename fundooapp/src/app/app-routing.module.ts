@@ -10,6 +10,9 @@ import { TrashComponent } from './components/trash/trash.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { SearchComponent } from './search/search.component';
 import { QuestionanswerComponent } from './components/questionanswer/questionanswer.component';
+import { ServiceComponent } from './components/service/service.component';
+import { PaymentComponent } from './components/payment/payment.component';
+
 
 const routes: Routes = [
   {  path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -18,12 +21,15 @@ const routes: Routes = [
   {
     path: 'register', component: RegisterComponent
   },
+  
+  {
+    path:'service',component:ServiceComponent,
+    
+  },
   {
     path: 'dashboard', component: DashboardComponent,
     children: [
-      {
-        path: '', redirectTo: 'notes', pathMatch: 'full' 
-      },
+      {  path: '', redirectTo: 'notes', pathMatch: 'full' },
       {
         path: 'notes', component: NotesComponent,
         
@@ -39,7 +45,10 @@ const routes: Routes = [
       },
       {
         path:'QuestionAnswer/:cardId',component:QuestionanswerComponent
-      }
+      },
+      {
+        path:'payment',component:PaymentComponent
+      },
     ]
   
   },

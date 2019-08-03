@@ -1,0 +1,191 @@
+<div class="main" fxLayout="column">
+<div fxLayout="row" class="matchiplist">
+  <div style="margin-top:10px;">
+    <mat-chip-list>
+      <mat-chip class="matchip">fundooNotes</mat-chip>
+    </mat-chip-list>
+  </div>
+  <div fxLayout="column">
+    <mat-slider [min]="20" [max]="100" [ngStyle.xs]="{'width.px':200}"[value]="value"></mat-slider>
+    <div fxLayout="row"  fxLayoutGap="20%">
+      <div fxFlex='20' style="font-size: 10px;font-family: arial">SIGNIN</div>
+      <div fxFlex='20' style="font-size: 10px;font-family: arial">PLACE ORDER</div>
+      <div fxFlex='20' style="font-size: 10px;font-family: arial">COMPLETE PAYMENT</div>
+    </div>
+  </div>
+</div>
+<div *ngIf="show==true">
+  <div fxLayout="row"  fxLayoutGap="20%">
+    <div style="padding-top:20px;padding-left:70px;font-weight:bold">Shopping Cart</div>
+    <div style="padding-top:30px;padding-left:70px;font-size:10px" [ngStyle.xs]="{'margin-left':30}">Price</div>
+    <div fxLayout="row">
+      <div fxHide.xs style="padding-top:30px;font-size:10px">Validity</div>
+    </div>
+  </div>
+  <mat-divider style="width:60%;margin-left:60px;margin-top:10px"></mat-divider>
+  <div fxLayout="row"  fxLayoutGap="2%" class="matcard">
+    <mat-card class="matcard1">
+      <mat-card-content  style="font-size:12px;color:white">$
+        {{service.product.price}} per Month</mat-card-content>
+    </mat-card>
+    <div fxLayout="column"  fxLayoutGap="1%">
+      <div fxLayout="row">
+        <div 
+          style="text-transform: capitalize;font-size:14px;font-family:arial;color:steelblue;font-weight: bold">
+          {{service.product.name}} Pack Details</div>
+        <div  style="font-size:10px;margin-left:235px"> $ {{service.product.price}}
+        </div>
+        <div  fxHide.xs style="font-size:10px;margin-left:288px">Per Month</div>
+      </div>
+      <div fxLayout="row"  fxLayoutGap="10%">
+
+        <div fxLayout="column"  fxLayoutGap="5%">
+          <li class="a1" style="font-size:12px;margin-left:10px;opacity:0.5">Unlimited wall Space</li>
+          <li class="a2" style="font-size:12px;opacity:0.5" >$
+            {{service.product.price}} per Month</li>
+        </div>
+        <div fxLayout="column"  fxLayoutGap="2%">
+          <li class="a3" style="font-size:12px;margin-left:10px;opacity:0.5">Nice Interface</li>
+          <li class="a4" style="font-size:12px;opacity:0.5" >
+            {{service.product.description}}</li>
+        </div>
+      </div>
+    </div>
+    <mat-card class="matcard2">
+      <div fxLayout="column"  fxLayoutGap="5%" fxLayoutAlign="center center">
+        <div style="font-size:11px;font-family:arial" >Subtotal(1 item):
+          ${{service.product.price}}</div>
+        <button mat-stroked-button style="font-size:11px;font-family:arial" (click)="valueChange()"
+          (click)="show=false">Proceed to Checkout</button>
+      </div>
+    </mat-card>
+  </div>
+  <mat-divider style="width:60%;margin-left:60px;margin-top:10px"></mat-divider>
+  <div style="padding-left:56%;font-size:11px;font-family:arial" >Subtotal(1 item):
+    ${{service.product.price}}</div>
+</div>
+<div *ngIf="show==false && hide==true">
+
+  <div fxLayout="column">
+    <div style="padding-top:20px;padding-left:70px;font-weight:bold;font-size:14px;">Review your order</div>
+    <div style="padding-left:70px;font-size:8px;opacity:0.7">By clicking on Place Your Order and Pay you agree to
+      fundooNotes privacy and condition of use</div>
+    <div fxLayout="row">
+      <mat-card class="matcard3">
+        <div fxLayout="row" fxLayoutGap='5%'>
+          <mat-card>
+            <mat-card-content  style="font-size:12px;color:black">$
+              {{service.product.price}} per Month</mat-card-content>
+          </mat-card>
+          <div fxLayout="column" fxLayoutGap="1%">
+            <div fxLayout="row">
+              <div 
+                style="text-transform: capitalize;font-size:14px;font-family:arial;color:steelblue;font-weight: bold">
+                {{service.product.name}} Pack Details</div>
+              <div  style="font-size:10px;margin-left:235px"> $
+                {{service.product.price}} per month</div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="10%">
+
+              <div fxLayout="column" fxLayoutGap="5%">
+                <li class="a1" style="font-size:12px;margin-left:10px;opacity:0.5;font-family:arial">Unlimited wall
+                  Space</li>
+                <li class="a2" style="font-size:12px;opacity:0.5;font-family:arial" >
+                  $ {{service.product.price}} per Month</li>
+              </div>
+              <div fxLayout="column" fxLayoutGap="2%">
+                <li class="a3" style="font-size:12px;margin-left:10px;opacity:0.5;font-family:arial">Nice Interface</li>
+                <li class="a4" style="font-size:12px;opacity:0.5;font-family:arial" >
+                  {{service.product.description}}</li>
+              </div>
+            </div>
+          </div>
+        </div>
+        <mat-divider style="margin-top:10px;"></mat-divider>
+        <div fxLayout="row">
+          <div style="font-size:12px;opacity:0.9;font-family:arial;margin-top:20px;">Delivery address</div>
+          <div fxLayout="column">
+            <div style="font-size:10px;opacity:0.9;font-family:arial;margin-top:15px;margin-left:400px">Payment method
+            </div>
+            <div style="font-size:10px;opacity:0.9;font-family:arial;margin-left:400px">Cash on Delivery</div>
+          </div>
+        </div>
+        <div class="rectangle">
+          <input matInput [(ngModel)]="address">
+        </div>
+      </mat-card>
+      <mat-card class="matcard4">
+        <div fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+          <button mat-stroked-button style="font-size:11px;font-family:arial" (click)="valueChange2()"
+            (click)="hide=false" (click)="placeOrder()">Place your order</button>
+          <div style="font-size:11px;font-family:arial" >Subtotal(1 item):
+            ${{service.product.price}}</div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<div *ngIf="hide==false">
+  <div fxLayout="column">
+    <div style="padding-top:20px;padding-left:70px;font-weight:bold;font-size:14px;">Order List</div>
+    <div fxLayout="row">
+      <mat-card class="matcard5">
+        <div fxLayout="row" fxLayoutGap='5%'>
+          <mat-card>
+            <mat-card-content  style="font-size:12px;color:black">$
+              {{service.product.price}} per Month</mat-card-content>
+          </mat-card>
+          <div fxLayout="column" fxLayoutGap="1%">
+            <div fxLayout="row">
+              <div 
+                style="text-transform: capitalize;font-size:14px;font-family:arial;color:steelblue;font-weight: bold">
+                {{service.product.name}} Pack Details</div>
+              <div  style="font-size:10px;margin-left:235px"> $
+                {{service.product.price}} per month</div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="10%">
+
+              <div fxLayout="column" fxLayoutGap="5%">
+                <li class="a1" style="font-size:12px;margin-left:10px;opacity:0.5;font-family:arial">Unlimited wall
+                  Space</li>
+                <li class="a2" style="font-size:12px;opacity:0.5;font-family:arial" >
+                  $ {{service.product.price}} per Month</li>
+              </div>
+              <div fxLayout="column" fxLayoutGap="2%">
+                <li class="a3" style="font-size:12px;margin-left:10px;opacity:0.5;font-family:arial">Nice Interface</li>
+                <li class="a4" style="font-size:12px;opacity:0.5;font-family:arial">
+                  {{service.product.description}}</li>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div  style="font-size:11px;font-family:arial;cursor:pointer;margin-top:10px;margin-left:500px;color:dodgerblue" *ngIf="peek==true" (click)="peek=false" (click)="completeOrder()">Pending..</div>
+        <div  style="font-size:11px;font-family:arial;cursor:pointer;margin-top:10px;margin-left:500px;color:dodgerblue" *ngIf="peek==false">Completed</div>
+      </mat-card>
+    </div>
+  </div>
+</div>
+</div>
+<!--div class="main" fxLayout="column">
+  <div fxLayout="row" class="matchiplist">
+    <div >
+      <mat-chip-list>
+        <mat-chip class="matchip">fundooNotes</mat-chip>
+      </mat-chip-list>
+    </div>
+    <div fxLayout="column">
+      <mat-slider [min]="20" [max]="100" [ngStyle.xs]="{'width.px':200}"[value]="value"></mat-slider>
+      <div fxLayout="row" class="labels" fxLayoutGap="20%">
+        <div  style="font-size: 10px;font-family: arial">SIGNIN</div>
+        <div  style="font-size: 10px;font-family: arial">PLACE ORDER</div>
+        <div  style="font-size: 10px;font-family: arial">COMPLETE PAYMENT</div>
+      </div>
+    </div>
+</div>
+<div *ngIf="show==true" >
+  <div fxLayout="row" fxFlex='100'>
+    <div fxFlex='30' style="font-weight:bold">Shopping Cart</div>
+    <div fxFlex='80' style="font-size:10px">Price</div>
+  </div>
+</div>
+</div>-->

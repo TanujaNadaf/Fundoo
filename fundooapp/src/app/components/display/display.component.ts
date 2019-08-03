@@ -27,7 +27,7 @@ export class DisplayComponent implements OnInit {
   public show:Boolean=false;
   public time:string
   public cards=[];
-  
+  public  toggle = false;
   @Output() Event = new EventEmitter<any>()
   private today = new Date();
    private tomorrow = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate() + 1)
@@ -37,7 +37,7 @@ export class DisplayComponent implements OnInit {
   }
   
   ngOnInit() {
-    
+    this.getGrid();
   }
 
   openDialog(card): void {
@@ -100,6 +100,11 @@ openUpdateNotesLabel(labelDetails){
 }
 showQuestion(){
   this.questionasked=1;
+}
+getGrid() {
+  this.data.currentGridEvent.subscribe(message => {
+    this.toggle = message;
+  })
 }
 }
 

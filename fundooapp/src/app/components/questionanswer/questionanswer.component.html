@@ -27,7 +27,7 @@
   </div>
   <div fxLayout="row" class="icon"> 
     <div class="replyimage">
-    <img  src='../../../assets/images/baseline-reply-24px.svg'(click)="hide=false"></div>
+    <img  src='../../../assets/images/baseline-reply-24px.svg'(click)="repliedFunc()" (click)="questionId=userDetails.id" ></div>
     <div class="thumbsup" *ngIf="isLiked(userDetails)">
     <img  *ngIf="liked==0" src='../../../assets/images/baseline-thumb_up_alt-24px.svg' (click)="likedQuestion(userDetails.id,true)">
     <img  *ngIf="liked==1" src='../../../assets/images/baseline-thumb_up_alt-24px.svg' (click)="likedQuestion(userDetails.id,false)">
@@ -41,17 +41,83 @@
   <div class="ratenumber">{{userDetails.rate[0].rate}}</div>
   </div>
 </div>
-<div *ngIf="hide==false">
+<div *ngIf="replied==1 && questionId==userDetails.id">
   <div class="editor" [froalaEditor] [(froalaModel)]="replycontent"></div>
-  <button class="replybutton" mat-button>Reply</button></div>
+  <button class="replybutton" mat-button (click)="questionAnswerReply(userDetails.id,replycontent)">Reply</button></div>
+</div>
+<div *ngFor="let first of messageArray">
+  <div *ngIf="parentId==first.parentId && first.isApproved==true">
+      <div fxLayout="row" class="row2" fxLayoutGap="2%">
+      <button class="minifabbutton" mat-mini-fab *ngIf="image2!=''"
+      [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover'}"></button>
+      <div fxLayout="column">
+      <div fxLayout="row" class="row" fxLayoutGap='2%'>
+          <div class="firstName">{{first.user.firstName}}</div>
+          <div class="lastName">{{first.user.lastName}}</div>
+           </div>
+        <div class="date">{{today|date:'mediumDate'}},{{today|date:'shortTime'}}</div>
+        
+      </div>
+      <div fxLayout="row" class="icon"> 
+      <div class="replyimage">
+          <img  src='../../../assets/images/baseline-reply-24px.svg' (click)="repliedFunc()" (click)="questionId=first.id"></div>
+          <div class="thumbsup" *ngIf="isLiked(first)">
+              <img  *ngIf="liked==0" src='../../../assets/images/baseline-thumb_up_alt-24px.svg' (click)="likedQuestion(first.id,true)">
+              <img  *ngIf="liked==1" src='../../../assets/images/baseline-thumb_up_alt-24px.svg' (click)="likedQuestion(first.id,false)">
+              </div>
+              <div class="likeddetails" >{{liked}} likes</div> 
+              <div>
+                  <div class="barrating">
+                   <bar-rating *ngIf="first.rate.length!=0" [(rate)]="first.rate[0].rate" (rateChange)="ratedQuestion(first.id,$event)" [max]="5"></bar-rating>
+                   <bar-rating *ngIf="first.rate.length==0" (rateChange)="ratedQuestion(first.id,$event)" [max]="5"></bar-rating></div>
+                  </div>
+                  <div class="ratenumber">{{first.rate[0].rate}}</div>
+        </div>
+      </div>
+      <div class="questiondata2" [innerHTML]="first.message"></div>
+      <div *ngIf="replied==1 && questionId==first.id" >
+          <div class="editor" [froalaEditor] [(froalaModel)]="replycontent"></div>
+          <button class="replybutton" mat-button (click)="questionAnswerReply(first.id,replycontent)">Reply</button></div>
+        
+
+
+<div *ngFor="let second of messageArray">
+    <div *ngIf="first.id==second.parentId && second.isApproved==true">
+        <div fxLayout="row" class="row2" fxLayoutGap="2%">
+        <button class="minifabbutton" mat-mini-fab *ngIf="image2!=''"
+        [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover'}"></button>
+        <div fxLayout="column">
+        <div fxLayout="row" class="row" fxLayoutGap='2%'>
+            <div class="firstName">{{second.user.firstName}}</div>
+            <div class="lastName">{{second.user.lastName}}</div>
+             </div>
+          <div class="date">{{today|date:'mediumDate'}},{{today|date:'shortTime'}}</div>
+          
+        </div>
+        <div fxLayout="row" class="icon"> 
+        <div class="replyimage">
+            <img  src='../../../assets/images/baseline-reply-24px.svg' (click)="repliedFunc()"(click)="questionId=second.id"></div>
+            <div class="thumbsup" *ngIf="isLiked(second)">
+                <img  *ngIf="liked==0" src='../../../assets/images/baseline-thumb_up_alt-24px.svg' (click)="likedQuestion(second.id,true)">
+                <img  *ngIf="liked==1" src='../../../assets/images/baseline-thumb_up_alt-24px.svg' (click)="likedQuestion(second.id,false)">
+                </div>
+                <div class="likeddetails" >{{liked}} likes</div> 
+                <div>
+                    <div class="barrating">
+                     <bar-rating *ngIf="second.rate.length!=0" [(rate)]="second.rate[0].rate" (rateChange)="ratedQuestion(second.id,$event)" [max]="5"></bar-rating>
+                     <bar-rating *ngIf="second.rate.length==0" (rateChange)="ratedQuestion(second.id,$event)" [max]="5"></bar-rating></div>
+                    </div>
+                    <div class="ratenumber">{{second.rate[0].rate}}</div>
+          </div>
+        </div>
+        <div class="questiondata2" [innerHTML]="second.message"></div>
+        <div *ngIf="replied==1 && questionId==second.id" >
+            <div class="editor" [froalaEditor] [(froalaModel)]="replycontent2"></div>
+            <button class="replybutton" mat-button (click)="questionAnswerReply(second.id,replycontent2)">Reply</button></div>
+          
+  </div>
+  </div>
+</div>
 </div>
 </mat-card>
 </div>
-<!-- <div fxLayout="row"> 
-  <img class="reply" src='../../../assets/images/baseline-reply-24px.svg'(click)="hide=false">
-  <div *ngIf="isLiked(userDetails)">
-  <img class="thumbsup" *ngIf="liked==0" src='../../../assets/images/baseline-thumb_up_alt-24px.svg' (click)="likedQuestion(userDetails.id,true)">
-  <img class="thumbsup" *ngIf="liked==1" src='../../../assets/images/baseline-thumb_up_alt-24px.svg' (click)="likedQuestion(userDetails.id,false)">
-  <div class="likenumber">{{liked}} likes</div>
-  </div>
-</div>-->

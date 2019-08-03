@@ -1,0 +1,59 @@
+::ng-deep .mat-dialog-container{
+    padding:0px;
+}
+.mat-card{
+    padding:0px;
+    border-radius:0px;
+    
+}
+.header{
+    height:30px;
+}
+.heading{
+    font-size:14px;
+    font-family:arial;
+    margin-left:25px;
+    display:flex;
+    margin-top:5px;
+    color:white;
+    font-weight:bold;
+}
+.price{
+    font-size:11px;
+    font-family:arial;
+    margin-top:8px;
+    float:right;
+    color:white;
+    font-weight:bold;
+}
+
+.mat-tab-group{
+    font-family:arial;
+    font-size:14px;
+     padding:15px;
+     opacity:0.5;
+}
+ ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+    background:black;
+}
+::ng-deep .mat-tab-group[mat-stretch-tabs] > .mat-tab-header .mat-tab-label{
+    height:30px;
+    background-color:transparent;
+}
+::ng-deep .mat-tab-header .mat-tab-label{
+  background-color: #fb0;
+}
+::ng-deep .mat-tab-body-wrapper{
+    padding:10px;
+    
+}
+.buttons{
+    padding-left:20px;
+    padding-bottom:20px;
+    
+}
+.mat-raised-button{
+    background-color:dodgerblue;
+     line-height: 30px;
+     font-family:arial;
+}

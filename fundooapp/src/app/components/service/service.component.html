@@ -1,0 +1,23 @@
+<div fxLayout="row" class="heading">
+  <div class="header" >Fundoo Notes</div>
+</div>
+<mat-divider></mat-divider>
+<div class="title" fxLayout="row" fxLayoutAlign="center center">
+  Which Fundoo Notes Service package do you want?
+</div>
+<div  fxLayout="row" fxLayoutGap="6%" fxLayoutAlign="center center">
+  <div *ngFor="let service of serviceCards" class="allCards"  (click)="openPackDialog(service)">
+  <mat-card class="matcard1" fxFlex='11' fxLayout="column" [class.matcardc]="getColor(service.name)" >
+    <div class="heading1">$ 6.99 per </div>
+    <div class="heading2">Month</div>
+    <a class="advance">{{service.name}}</a>
+    <li class="first">Unlimited wall space</li>
+    <li class="second">Nice Interface</li>
+    <li class="third">${{service.price}} per/month</li>
+    <li class="fourth">Ability to add only title and description</li>
+    </mat-card>
+ <div class="add" >ADD TO CART</div>
+  </div>
+  
+</div>
+

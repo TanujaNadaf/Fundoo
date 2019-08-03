@@ -23,8 +23,9 @@ constructor(@Inject(MAT_DIALOG_DATA) public data:any,private userService:UserSer
   ngOnInit() {
   
   }
-imageCropped(event){
-this.croppedImage=event.file
+imageCropped($event){
+  console.log("event in image cropper",$event)
+this.croppedImage=$event.file
   
 }
 
@@ -36,7 +37,8 @@ onUpload(){
   this.userService.addImage(uploadData).subscribe(response=>{
     console.log("Response to add image",response);
     this.img=response['status']['imageUrl'];
-    this.img = environment.apiUrl + response['status'].imageUrl;
+    //this.img = environment.apiUrl + response['status'].imageUrl;
+    //console.log("image is",this.img)
     localStorage.setItem("imageUrl", response['status'].imageUrl);
     this.dialogRefPic.close()
     this.dataService.sendData(true);

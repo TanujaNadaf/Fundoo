@@ -40,7 +40,7 @@ export class IconComponent implements OnInit {
       [{ color: '#DDA0DD' }, { color: '#FFC0CB' }, { color: '#DEB887' }, { color: '#DCDCDC' }]
     ]
     this.getAllLabels();
-
+    console.log("Card in icon component",this.cards);
   }
 
   @Output() Event = new EventEmitter<any>()
@@ -69,6 +69,7 @@ export class IconComponent implements OnInit {
       'isDeleted': true
 
     }
+    console.log("card in icon component",note);
     this.userService.delete(note).subscribe(data => {
 
       console.log("Response in Delete", data);
@@ -85,13 +86,13 @@ export class IconComponent implements OnInit {
   }
   deleteForever(){
     
-    const note = {
+    const note2 = {
       'noteIdList': [this.deletedCard['id']],
       'isDeleted': true
 
     }
-   
-    this.userService.deleteForeverNotes(note).subscribe(data => {
+    console.log("deleted card is",note2) ;
+    this.userService.deleteForeverNotes(note2).subscribe(data => {
 
       console.log("Response to delete forever notes", data);
       this.Event.emit();

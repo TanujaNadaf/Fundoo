@@ -116,6 +116,27 @@ likedQuestion(id,data){
 ratedQuestion(id,rate){
   return this.httpService.post('/questionAndAnswerNotes/rate/'+id,rate)
 }
+logout(body){
+  return this.httpService.post('/user/logout',body)
+}
+questionAnswerReply(id,replyData){
+  return this.httpService.post('/questionAndAnswerNotes/reply/'+id,replyData)
+}
+getUserService(){
+  return this.httpService.get('user/service')
+}
+addToCart(serviceId){
+  return this.httpService.post('/productcarts/addToCart',serviceId)
+}
+getProductCart(){
+  return this.httpService.get('/productcarts/myCart')
+}
+placeOrder(orderDetails){
+  return this.httpService.post('/productCarts/placeOrder',orderDetails);
+}
+completeOrder(cartId){
+  return this.httpService.post('/productcarts/adminCompleteOrder',cartId);
+}
 }
 
 

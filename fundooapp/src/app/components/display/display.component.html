@@ -1,14 +1,14 @@
-<div class="center" fxLayoutGap="10px" fxLayoutAlign="center center">
+<div fxLayout="row wrap"  fxLayoutAlign="center center" >
   <div *ngFor="let data of allCards | filter:text">
     <div *ngIf="!data.isDeleted && !data.isArchived">
-      <mat-card [ngStyle]="{'background-color':data.color}">
+    <div  [ngClass]="{'grid':!toggle,'list':toggle}">
+        <mat-card  [ngStyle]="{'background-color':data.color}" >
         <div fxLayout="row" (click)="openDialog(data)"  >
           {{data.title}}
         </div>
         <div class="description" fxLayout="row" (click)="openDialog(data)">
           {{data.description}}
         </div>
-        
         <div fxLayout="row" fxLayoutGap="2%"  class="rowButtons">
           <div class="matchip" *ngFor="let index of data.noteLabels">
               <mat-chip-list >
@@ -70,6 +70,7 @@
         </div>
         </div>
       </mat-card>
+      </div>
     </div>
   </div>
 </div>

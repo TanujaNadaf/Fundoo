@@ -102,8 +102,27 @@ export class DashboardComponent implements OnInit {
 
     });
   }
-
-
+  logout(){
+    this.userService.logout({}).subscribe(response => {
+      console.log("Response to logout",response)
+        
+        this.router.navigate(['/login']);
+    },error=>{
+      console.log("error in logout",error)
+    });
+  }
+  
+  gridView() {
+    this.data.changeGridEvent(true);
+    this.list = 1;
+  }
+  listView(){
+    this.data.changeListEvent(false);
+    this.list = 0;
+  }
+  routeToPayment(){
+    this.router.navigate(['dashboard/payment']);
+  }
 }
 
 
