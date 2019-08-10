@@ -11,7 +11,7 @@ export class UserServiceService {
     return this.httpService.post('user/userSignUp', data);
 }
   login(data){
-    
+    console.log("login details in user service",data);
     return this.httpService.post('user/login', data);
   }
   addNotes(data) {

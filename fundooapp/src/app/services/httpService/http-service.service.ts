@@ -8,12 +8,15 @@ import { environment } from 'src/environments/environment';
 export class HttpServiceService {
   dbUrl=environment.url;
   constructor(private http: HttpClient) { }
-  post(url,data){
-    
+ post(url,data){
+    console.log("login url in http service",url);
+    console.log("login details in http service",data);
     const httpOptions = {
       headers: new HttpHeaders(
         {
           Authorization: localStorage.getItem('token'),
+         //'Content-Type' : 'application/json'
+
           
         })
     };
@@ -39,5 +42,8 @@ export class HttpServiceService {
         })
     };
     return this.http.delete(this.dbUrl+url,httpOptions);
+  }
+  loggedIn(){
+    return !!localStorage.getItem('token');
   }
 }

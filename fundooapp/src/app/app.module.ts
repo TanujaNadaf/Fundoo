@@ -54,7 +54,7 @@ import { PackdialogComponent } from './components/packdialog/packdialog.componen
 import {MatSliderModule} from '@angular/material/slider'
 import {MatTabsModule} from '@angular/material/tabs';
 import { PaymentComponent } from './components/payment/payment.component';
-
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -108,7 +108,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     MatIconModule, MatMenuModule, MatExpansionModule, MatSnackBarModule, MatDialogModule, MatDatepickerModule, MatNativeDateModule, MatAutocompleteModule, MatSelectModule, MatChipsModule, ImageCropperModule,
     MatCheckboxModule, CommonModule,FroalaEditorModule.forRoot(),FroalaViewModule.forRoot(),BarRatingModule,MatTabsModule,MatSliderModule
   ],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule,AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent, EditlabelsComponent, DeletelabelComponent, CropimageComponent, CollaboratorComponent, UpdatenoteslabelComponent,PackdialogComponent]
 })

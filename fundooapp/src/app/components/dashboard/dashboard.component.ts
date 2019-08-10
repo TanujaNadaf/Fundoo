@@ -105,8 +105,8 @@ export class DashboardComponent implements OnInit {
   logout(){
     this.userService.logout({}).subscribe(response => {
       console.log("Response to logout",response)
-        
         this.router.navigate(['/login']);
+        //localStorage.removeItem('token');
     },error=>{
       console.log("error in logout",error)
     });
