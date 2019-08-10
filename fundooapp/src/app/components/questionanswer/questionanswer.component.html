@@ -35,10 +35,10 @@
     <div class="likeddetails" >{{liked}} likes</div>
     <div>
     <div class="barrating">
-     <bar-rating *ngIf="userDetails.rate.length!=0" [(rate)]="userDetails.rate[0].rate" (rateChange)="ratedQuestion(userDetails.id,$event)" [max]="5"></bar-rating>
-     <bar-rating *ngIf="userDetails.rate.length==0" (rateChange)="ratedQuestion(userDetails.id,$event)" [max]="5"></bar-rating></div>
+     <bar-rating *ngIf="userDetails.rate.length<0" [(rate)]="userDetails.rate[0].rate" (rateChange)="ratedQuestion(userDetails.id,$event)" [max]="5"></bar-rating>
+     <bar-rating *ngIf="userDetails.rate.length>0" (rateChange)="ratedQuestion(userDetails.id,$event)" [max]="5"></bar-rating></div>
     </div>
-  <div class="ratenumber">{{userDetails.rate[0].rate}}</div>
+  <div *ngIf="userDetails.rate.length>0" class="ratenumber">{{userDetails.rate[0].rate}}</div>
   </div>
 </div>
 <div *ngIf="replied==1 && questionId==userDetails.id">

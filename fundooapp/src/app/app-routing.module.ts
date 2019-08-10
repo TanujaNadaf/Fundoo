@@ -12,7 +12,7 @@ import { SearchComponent } from './search/search.component';
 import { QuestionanswerComponent } from './components/questionanswer/questionanswer.component';
 import { ServiceComponent } from './components/service/service.component';
 import { PaymentComponent } from './components/payment/payment.component';
-import { AuthGuard } from './auth.guard';
+
 
 
 const routes: Routes = [
@@ -51,7 +51,7 @@ const routes: Routes = [
         path:'payment',component:PaymentComponent
       },
     ],
-    canActivate:[AuthGuard]
+    
   
   },
 

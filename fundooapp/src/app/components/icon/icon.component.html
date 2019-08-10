@@ -128,7 +128,7 @@
       <button mat-menu-item>
         <span>Add drawing</span>
       </button>
-      <button mat-menu-item  (click)="routeToQA()">
+      <button mat-menu-item *ngIf="cards.questionAndAnswerNotes.length<0" (click)="routeToQA()">
         <span>Ask a Question</span>
       </button>
       <button mat-menu-item  (click)="routeToQA()">

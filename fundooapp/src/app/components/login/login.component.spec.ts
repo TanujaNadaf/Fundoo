@@ -29,15 +29,21 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ServiceComponent } from '../service/service.component';
+import { QuestionanswerComponent } from '../questionanswer/questionanswer.component';
+import { PaymentComponent } from '../payment/payment.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { BarRatingModule } from "ngx-bar-rating";
+import {MatSliderModule} from '@angular/material/slider';
+import { FlexLayoutModule } from '@angular/flex-layout';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[MatFormFieldModule,FormsModule,MatInputModule,MatCardModule,ReactiveFormsModule,AppRoutingModule,MatIconModule,MatMenuModule,MatDividerModule,MatSidenavModule,MatListModule,MatDatepickerModule,MatSelectModule,MatAutocompleteModule,MatCheckboxModule, MatChipsModule,HttpClientModule,BrowserAnimationsModule],
-      declarations: [ LoginComponent,DialogComponent,RegisterComponent,DashboardComponent,NotesComponent,RemindersComponent,ArchiveComponent,TrashComponent,IconComponent,SearchPipe,SearchComponent,AddNoteComponent,DisplayComponent,SearchlabelPipe]
+      imports:[MatFormFieldModule,FormsModule,MatInputModule,MatCardModule,ReactiveFormsModule,AppRoutingModule,MatIconModule,MatMenuModule,MatDividerModule,MatSidenavModule,MatListModule,MatDatepickerModule,MatSelectModule,MatAutocompleteModule,MatCheckboxModule, MatChipsModule,HttpClientModule,BrowserAnimationsModule,FroalaEditorModule, FroalaViewModule,BarRatingModule,MatSliderModule,FlexLayoutModule],
+      declarations: [ LoginComponent,DialogComponent,RegisterComponent,DashboardComponent,NotesComponent,RemindersComponent,ArchiveComponent,TrashComponent,IconComponent,SearchPipe,SearchComponent,AddNoteComponent,DisplayComponent,SearchlabelPipe,ServiceComponent,QuestionanswerComponent,PaymentComponent]
     })
     .compileComponents();
   }));

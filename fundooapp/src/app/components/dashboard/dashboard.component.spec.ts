@@ -29,15 +29,24 @@ import { SearchPipe } from '../pipe/search.pipe';
 import { MatChipsModule } from '@angular/material/chips';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ServiceComponent } from '../service/service.component';
+import { QuestionanswerComponent } from '../questionanswer/questionanswer.component';
+import { PaymentComponent } from '../payment/payment.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { BarRatingModule } from "ngx-bar-rating";
+import { PackdialogComponent } from '../../components/packdialog/packdialog.component'
+import {MatSliderModule} from '@angular/material/slider'
+import {MatTabsModule} from '@angular/material/tabs';
+import { FlexLayoutModule } from '@angular/flex-layout';
+;
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[MatIconModule,MatFormFieldModule,MatMenuModule,MatDividerModule,MatSidenavModule,MatListModule,AppRoutingModule,FormsModule,ReactiveFormsModule,MatCardModule, MatDatepickerModule,MatAutocompleteModule,MatSelectModule,MatCheckboxModule,MatChipsModule,HttpClientModule,BrowserAnimationsModule,MatInputModule],
-      declarations: [ DashboardComponent,LoginComponent,DialogComponent,RegisterComponent,NotesComponent,RemindersComponent,ArchiveComponent, TrashComponent,SearchComponent,IconComponent,AddNoteComponent,DisplayComponent,SearchlabelPipe,SearchPipe]
+      imports:[MatIconModule,MatFormFieldModule,MatMenuModule,MatDividerModule,MatSidenavModule,MatListModule,AppRoutingModule,FormsModule,ReactiveFormsModule,MatCardModule, MatDatepickerModule,MatAutocompleteModule,MatSelectModule,MatCheckboxModule,MatChipsModule,HttpClientModule,BrowserAnimationsModule,MatInputModule,FroalaEditorModule, FroalaViewModule,BarRatingModule,MatSliderModule,MatTabsModule,FlexLayoutModule,],
+      declarations: [ DashboardComponent,LoginComponent,DialogComponent,RegisterComponent,NotesComponent,RemindersComponent,ArchiveComponent, TrashComponent,SearchComponent,IconComponent,AddNoteComponent,DisplayComponent,SearchlabelPipe,SearchPipe,ServiceComponent,QuestionanswerComponent,PaymentComponent,PackdialogComponent]
     })
     .compileComponents();
   }));

@@ -28,6 +28,13 @@ import { TrashComponent } from '../trash/trash.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { SearchComponent } from '../../search/search.component';
+import { ServiceComponent } from '../service/service.component';
+import { QuestionanswerComponent } from '../questionanswer/questionanswer.component';
+import { PaymentComponent } from '../payment/payment.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { BarRatingModule } from "ngx-bar-rating";
+import {MatSliderModule} from '@angular/material/slider';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 describe('NotesComponent', () => {
   let component: NotesComponent;
@@ -35,8 +42,8 @@ describe('NotesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[ FormsModule,MatFormFieldModule,MatInputModule,MatCardModule, MatIconModule,MatAutocompleteModule,ReactiveFormsModule,MatChipsModule,MatMenuModule,MatDividerModule,MatDatepickerModule ,MatCheckboxModule,MatSelectModule,HttpClientModule,AppRoutingModule,MatSidenavModule ,MatListModule,MatSnackBarModule],
-      declarations: [ NotesComponent,AddNoteComponent,DisplayComponent,IconComponent,SearchPipe,SearchlabelPipe,LoginComponent,DialogComponent, RegisterComponent,DashboardComponent,RemindersComponent,ArchiveComponent,TrashComponent,SearchComponent]
+      imports:[ FormsModule,MatFormFieldModule,MatInputModule,MatCardModule, MatIconModule,MatAutocompleteModule,ReactiveFormsModule,MatChipsModule,MatMenuModule,MatDividerModule,MatDatepickerModule ,MatCheckboxModule,MatSelectModule,HttpClientModule,AppRoutingModule,MatSidenavModule ,MatListModule,MatSnackBarModule,FroalaEditorModule, FroalaViewModule,BarRatingModule,MatSliderModule,FlexLayoutModule],
+      declarations: [ NotesComponent,AddNoteComponent,DisplayComponent,IconComponent,SearchPipe,SearchlabelPipe,LoginComponent,DialogComponent, RegisterComponent,DashboardComponent,RemindersComponent,ArchiveComponent,TrashComponent,SearchComponent,ServiceComponent,QuestionanswerComponent,PaymentComponent]
     })
     .compileComponents();
   }));

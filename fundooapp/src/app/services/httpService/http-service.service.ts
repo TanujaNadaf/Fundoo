@@ -43,7 +43,5 @@ export class HttpServiceService {
     };
     return this.http.delete(this.dbUrl+url,httpOptions);
   }
-  loggedIn(){
-    return !!localStorage.getItem('token');
-  }
+  
 }
